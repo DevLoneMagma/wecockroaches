@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cockroach Janta Party — हम आ गए</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tiro+Devanagari+Hindi:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a08;
+    --white: #f5f0e8;
+    --amber: #e8a020;
+    --amber-dim: #b07810;
+    --red: #c8321a;
+    --cream: #f0e8d0;
+    --cockroach: #3a3228;
+    --mid: #1a1810;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+  }
+
+  /* ── TICKER ── */
+  .ticker-wrap {
+    background: var(--amber);
+    color: var(--black);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 6px 0;
+    border-bottom: 2px solid var(--black);
+  }
+  .ticker-track {
+    display: inline-block;
+    animation: ticker 30s linear infinite;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid #2a2820;
+    position: sticky;
+    top: 0;
+    background: rgba(10,10,8,0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.08em;
+    color: var(--amber);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--amber); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: 80px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(120px, 22vw, 320px);
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(232,160,32,0.06);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--amber);
+    display: block;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 11vw, 160px);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: var(--white);
+  }
+  h1 .accent { color: var(--amber); }
+  h1 .hindi {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 0.55em;
+    display: block;
+    color: var(--cream);
+    opacity: 0.85;
+    line-height: 1.3;
+    margin-top: 8px;
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 28px;
+    padding-bottom: 8px;
+  }
+
+  .hero-quote {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--cream);
+    border-left: 3px solid var(--amber);
+    padding-left: 20px;
+    font-style: italic;
+  }
+  .hero-quote span {
+    font-family: 'Space Mono', monospace;
+    font-style: normal;
+    font-size: 11px;
+    display: block;
+    color: var(--amber);
+    margin-top: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--amber);
+    color: var(--black);
+    border: none;
+    padding: 14px 32px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .btn-primary:hover { background: var(--cream); transform: translateY(-2px); }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(245,240,232,0.3);
+    padding: 14px 32px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+  .hero-stats {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid #2a2820;
+    padding-top: 40px;
+    margin-top: 40px;
+    gap: 0;
+  }
+  .stat {
+    padding: 20px 0;
+    border-right: 1px solid #2a2820;
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--amber);
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    opacity: 0.5;
+    margin-top: 6px;
+  }
+  .stat-hindi {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 13px;
+    color: var(--cream);
+    opacity: 0.6;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ── SECTION UTILITY ── */
+  section { padding: 100px 40px; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #2a2820;
+    max-width: 200px;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: var(--white);
+  }
+  h2 .hindi {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 0.5em;
+    color: var(--cream);
+    opacity: 0.7;
+    display: block;
+    margin-top: 6px;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+
+  /* ── ORIGIN ── */
+  #origin {
+    background: var(--mid);
+    border-top: 1px solid #2a2820;
+    border-bottom: 1px solid #2a2820;
+  }
+  .origin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 60px;
+  }
+  .origin-date-card {
+    background: var(--cockroach);
+    padding: 32px;
+    border-left: 4px solid var(--red);
+  }
+  .origin-date {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    line-height: 0.9;
+    color: var(--red);
+    display: block;
+  }
+  .origin-date-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-top: 8px;
+    display: block;
+  }
+  .origin-quote-block {
+    margin-top: 28px;
+    padding: 20px;
+    background: rgba(200,50,26,0.08);
+    border: 1px solid rgba(200,50,26,0.2);
+  }
+  .origin-quote-block p {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--cream);
+    font-style: italic;
+  }
+  .origin-quote-block cite {
+    font-size: 10px;
+    font-style: normal;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-top: 12px;
+    display: block;
+  }
+
+  .origin-body p {
+    font-size: 15px;
+    line-height: 1.9;
+    opacity: 0.75;
+    margin-bottom: 20px;
+  }
+  .origin-body .highlight {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--cream);
+    opacity: 1;
+    border-bottom: 1px solid #2a2820;
+    padding-bottom: 24px;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+
+  /* ── ROAST SECTION ── */
+  #roast { background: var(--black); }
+  .roast-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 60px;
+  }
+
+  .roast-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #2a2820;
+    border: 1px solid #2a2820;
+  }
+
+  .roast-card {
+    background: var(--black);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .roast-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--amber);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .roast-card:hover::before { transform: scaleX(1); }
+  .roast-card:hover { background: var(--mid); }
+
+  .roast-tag {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 700;
+  }
+  .roast-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--white);
+  }
+  .roast-title .hindi {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 0.55em;
+    color: var(--cream);
+    opacity: 0.7;
+    display: block;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .roast-body {
+    font-size: 13px;
+    line-height: 1.8;
+    opacity: 0.65;
+    flex: 1;
+  }
+  .roast-punchline {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--amber);
+    font-style: italic;
+    border-top: 1px solid #2a2820;
+    padding-top: 16px;
+    margin-top: 8px;
+  }
+
+  /* ── MANIFESTO ── */
+  #manifesto {
+    background: var(--amber);
+    color: var(--black);
+  }
+  #manifesto .section-label { color: var(--black); opacity: 0.5; }
+  #manifesto .section-label::after { background: rgba(0,0,0,0.15); }
+  #manifesto h2 { color: var(--black); }
+  #manifesto h2 .hindi { color: var(--cockroach); opacity: 0.6; }
+
+  .manifesto-items {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 2px solid rgba(0,0,0,0.15);
+  }
+  .manifesto-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    gap: 40px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+    transition: padding-left 0.2s;
+  }
+  .manifesto-item:hover { padding-left: 12px; }
+
+  .manifesto-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 1;
+    color: rgba(0,0,0,0.12);
+    font-weight: 400;
+  }
+  .manifesto-text h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--black);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  .manifesto-text .hindi-demand {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 15px;
+    color: var(--cockroach);
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+  .manifesto-text p {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--cockroach);
+    margin-top: 8px;
+    opacity: 0.7;
+    max-width: 500px;
+  }
+  .manifesto-badge {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--black);
+    color: var(--amber);
+    padding: 6px 14px;
+    white-space: nowrap;
+  }
+
+  /* ── HALL OF SHAME ── */
+  #shame {
+    background: var(--mid);
+    border-top: 1px solid #2a2820;
+  }
+  .shame-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .shame-card {
+    border: 1px solid #2a2820;
+    padding: 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color 0.2s;
+  }
+  .shame-card:hover { border-color: var(--red); }
+
+  .shame-verdict {
+    position: absolute;
+    top: -12px;
+    right: 24px;
+    background: var(--red);
+    color: var(--white);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 4px 12px;
+  }
+  .shame-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--red);
+    opacity: 0.5;
+  }
+  .shame-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--white);
+  }
+  .shame-title .hindi {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 0.45em;
+    color: var(--cream);
+    opacity: 0.6;
+    display: block;
+    margin-top: 4px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .shame-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    opacity: 0.6;
+  }
+  .shame-punchline {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 14px;
+    color: var(--amber);
+    font-style: italic;
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  /* ── PLEDGE ── */
+  #pledge {
+    background: var(--black);
+    text-align: center;
+    padding: 120px 40px;
+    border-top: 1px solid #2a2820;
+  }
+  .pledge-cockroach {
+    font-size: 80px;
+    display: block;
+    margin-bottom: 32px;
+    animation: scuttle 4s ease-in-out infinite;
+    display: inline-block;
+  }
+  @keyframes scuttle {
+    0%, 100% { transform: rotate(-3deg) translateX(0); }
+    25% { transform: rotate(2deg) translateX(6px); }
+    75% { transform: rotate(-1deg) translateX(-4px); }
+  }
+
+  .pledge-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--mid);
+    border: 1px solid #2a2820;
+    padding: 16px 28px;
+    margin: 32px 0;
+  }
+  .counter-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--amber);
+    line-height: 1;
+    transition: all 0.3s;
+  }
+  .counter-label {
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    line-height: 1.6;
+  }
+
+  .pledge-text {
+    max-width: 640px;
+    margin: 0 auto 48px;
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--cream);
+    opacity: 0.85;
+    font-style: italic;
+  }
+
+  .pledge-oath {
+    max-width: 560px;
+    margin: 0 auto 40px;
+    padding: 24px;
+    border: 1px solid #2a2820;
+    font-size: 12px;
+    line-height: 2;
+    opacity: 0.5;
+    font-style: italic;
+  }
+  .pledge-oath strong {
+    color: var(--amber);
+    font-style: normal;
+    opacity: 1;
+  }
+
+  #pledge h2 { text-align: center; }
+  #pledge .section-label { justify-content: center; }
+  #pledge .section-label::after { display: none; }
+
+  /* ── JOIN FORM ── */
+  #join {
+    background: var(--cockroach);
+    border-top: 1px solid #2a2820;
+  }
+  .join-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 60px;
+    align-items: start;
+  }
+  .join-left p {
+    font-size: 15px;
+    line-height: 1.9;
+    opacity: 0.7;
+    margin-top: 24px;
+  }
+  .join-left .warning-box {
+    background: rgba(200,50,26,0.1);
+    border: 1px solid rgba(200,50,26,0.2);
+    padding: 20px;
+    margin-top: 32px;
+    font-size: 12px;
+    line-height: 1.8;
+    opacity: 0.8;
+  }
+  .join-left .warning-box strong {
+    color: var(--red);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  label .hindi-label {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 13px;
+    text-transform: none;
+    letter-spacing: 0;
+    opacity: 0.7;
+    margin-left: 8px;
+  }
+  input, select, textarea {
+    background: var(--mid);
+    border: 1px solid #2a2820;
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    padding: 12px 16px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--amber);
+  }
+  select option { background: var(--mid); }
+  textarea { height: 100px; resize: vertical; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--amber);
+    color: var(--black);
+    border: none;
+    padding: 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--cream); }
+
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    border: 1px solid var(--amber);
+  }
+  .success-msg h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--amber);
+    line-height: 1;
+  }
+  .success-msg p {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 18px;
+    color: var(--cream);
+    margin-top: 16px;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid #2a2820;
+    padding: 60px 40px 40px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #2a2820;
+  }
+  .footer-brand h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--amber);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .footer-brand p {
+    font-size: 12px;
+    line-height: 1.9;
+    opacity: 0.4;
+    max-width: 300px;
+  }
+  .footer-col h4 {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 20px;
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .footer-col a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 13px;
+    opacity: 0.4;
+    transition: opacity 0.15s;
+  }
+  .footer-col a:hover { opacity: 1; }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    opacity: 0.3;
+  }
+  .footer-bottom .hindi {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 13px;
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── MARQUEE DIVIDER ── */
+  .marquee-divider {
+    overflow: hidden;
+    background: var(--amber);
+    padding: 12px 0;
+    border-top: 1px solid var(--amber-dim);
+    border-bottom: 1px solid var(--amber-dim);
+  }
+  .marquee-inner {
+    display: inline-block;
+    white-space: nowrap;
+    animation: ticker 20s linear infinite;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    color: var(--black);
+  }
+  .marquee-sep { margin: 0 24px; opacity: 0.3; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 60px 20px 40px; }
+    .hero-content { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    section { padding: 60px 20px; }
+    .origin-grid, .join-grid { grid-template-columns: 1fr; gap: 40px; }
+    .roast-grid { grid-template-columns: 1fr; }
+    .shame-grid { grid-template-columns: 1fr; }
+    .manifesto-item { grid-template-columns: 60px 1fr; }
+    .manifesto-badge { display: none; }
+    .footer-top { grid-template-columns: 1fr; gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    🪳 CJI ne kaha cockroach — humne bana liya party &nbsp;✦&nbsp; हम आ गए &nbsp;✦&nbsp; COCKROACH JANTA PARTY — EST. MAY 2026 &nbsp;✦&nbsp; Ab aur nahi sahenge &nbsp;✦&nbsp; 40,000 cockroaches and counting &nbsp;✦&nbsp; Judiciary independent raho &nbsp;✦&nbsp; VOTE FOR THE UNKILLABLE &nbsp;✦&nbsp; 🪳 CJI ne kaha cockroach — humne bana liya party &nbsp;✦&nbsp; हम आ गए &nbsp;✦&nbsp; COCKROACH JANTA PARTY — EST. MAY 2026 &nbsp;✦&nbsp; Ab aur nahi sahenge &nbsp;✦&nbsp; 40,000 cockroaches and counting &nbsp;✦&nbsp; Judiciary independent raho &nbsp;✦&nbsp; VOTE FOR THE UNKILLABLE &nbsp;✦&nbsp;
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">CJP 🪳</a>
+  <ul class="nav-links">
+    <li><a href="#origin">Origin</a></li>
+    <li><a href="#roast">Roasts</a></li>
+    <li><a href="#manifesto">Manifesto</a></li>
+    <li><a href="#shame">Hall of Shame</a></li>
+    <li><a href="#join">Join</a></li>
+  </ul>
+  <a href="#pledge" class="btn-primary">Take the Pledge</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-text" aria-hidden="true">CJP</div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Est. May 2026 &nbsp;·&nbsp; The Unkillable Party</div>
+      <h1>
+        We<br>
+        <span class="accent">Rise.</span>
+        <span class="hindi">हम टूटेंगे नहीं।<br>हम बिखरेंगे नहीं।<br>हम और बढ़ेंगे।</span>
+      </h1>
+    </div>
+    <div class="hero-right">
+      <div class="hero-quote">
+        "They called us cockroaches from the highest court in the land. So we did what cockroaches do — we multiplied."
+        <span>— The founding swarm, May 2026</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="#join" class="btn-primary">Join the Swarm</a>
+        <a href="#manifesto" class="btn-ghost">Read Manifesto</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num" id="live-count">47,284</span>
+        <span class="stat-label">Cockroaches Recruited</span>
+        <span class="stat-hindi">हम बढ़ रहे हैं</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">0</span>
+        <span class="stat-label">Fumigations Survived</span>
+        <span class="stat-hindi">अब तक सुरक्षित</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">Supreme Court to Thank</span>
+        <span class="stat-hindi">जिसने जन्म दिया</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-divider" aria-hidden="true">
+  <div class="marquee-inner">
+    SURVIVE <span class="marquee-sep">✦</span> MULTIPLY <span class="marquee-sep">✦</span> INFEST <span class="marquee-sep">✦</span> OVERTHROW <span class="marquee-sep">✦</span> SURVIVE <span class="marquee-sep">✦</span> MULTIPLY <span class="marquee-sep">✦</span> INFEST <span class="marquee-sep">✦</span> OVERTHROW <span class="marquee-sep">✦</span> SURVIVE <span class="marquee-sep">✦</span> MULTIPLY <span class="marquee-sep">✦</span> INFEST <span class="marquee-sep">✦</span> OVERTHROW <span class="marquee-sep">✦</span> SURVIVE <span class="marquee-sep">✦</span> MULTIPLY <span class="marquee-sep">✦</span> INFEST <span class="marquee-sep">✦</span> OVERTHROW <span class="marquee-sep">✦</span>
+  </div>
+</div>
+
+<!-- ORIGIN -->
+<section id="origin">
+  <div class="section-label">The Spark</div>
+  <h2>
+    How We Were Born
+    <span class="hindi">जब Court ने हमें गाली दी, हमने party बना ली</span>
+  </h2>
+
+  <div class="origin-grid">
+    <div>
+      <div class="origin-date-card fade-up">
+        <span class="origin-date">15<br>MAY<br>2026</span>
+        <span class="origin-date-label">The Day The Movement Was Born</span>
+        <div class="origin-quote-block">
+          <p>"Unemployed youth who cannot find jobs — they run to media, RTI activism, and attack the system. Like cockroaches."</p>
+          <cite>— Chief Justice of India, Supreme Court, May 15 2026</cite>
+        </div>
+      </div>
+    </div>
+
+    <div class="origin-body fade-up">
+      <p class="highlight">जज साहब ने सोचा था हमें crush कर देंगे।<br>हमने सोचा — चलो, party बनाते हैं।</p>
+      <p>On May 15, 2026, from the highest bench in the country, the Chief Justice of India compared unemployed youth — students, teachers, activists — to cockroaches. His point was that job-seekers who turn to RTI activism and media are a nuisance to the system.</p>
+      <p>He was right about one thing: cockroaches are a nuisance to the system. They survive nuclear winters. They live in the walls of every VIP bungalow. They cannot be exterminated. They multiply.</p>
+      <p>So we took the insult. We wore it. We built the <strong>Cockroach Janta Party</strong> — not a registered political party, but a movement of every student, teacher, unemployed youth, RTI activist, journalist, and citizen the system has tried to crush.</p>
+      <p>यह movement है। Party तो बस शुरुआत है।</p>
+    </div>
+  </div>
+</section>
+
+<!-- ROAST SECTION -->
+<section id="roast">
+  <div class="roast-header">
+    <div>
+      <div class="section-label">The Great Indian Roast</div>
+      <h2>
+        System Ki<br>
+        <span class="accent" style="color:var(--amber)">Charbi</span>
+        <span class="hindi">क्योंकि satire ही असली journalism है अब</span>
+      </h2>
+    </div>
+  </div>
+
+  <div class="roast-grid">
+    <div class="roast-card fade-up">
+      <span class="roast-tag">#Economy</span>
+      <div class="roast-title">
+        GDP Gaya Tel Lene
+        <span class="hindi">जीडीपी तेल लेने गई</span>
+      </div>
+      <p class="roast-body">Finance Minister says the economy is booming. Also Finance Minister: "Stop eating onions. Adapt. Innovate. Breathe less." Meanwhile GDP numbers are being calculated by the same guy who counts votes.</p>
+      <p class="roast-punchline">"Achhe din aa rahe hain — bas thoda aur wait karo. 2047 tak confirm hai."</p>
+    </div>
+
+    <div class="roast-card fade-up">
+      <span class="roast-tag">#Unemployment</span>
+      <div class="roast-title">
+        Pakoda Startup Yojana
+        <span class="hindi">रोज़गार का नया मॉडल</span>
+      </div>
+      <p class="roast-body">Graduation degree in hand. No job in sight. Government solution: fry pakodas. Next policy update will classify begging as a "gig economy opportunity" and assign you a GSTIN for receiving alms.</p>
+      <p class="roast-punchline">"Rozgar chahiye toh skill develop karo. Jugaad hi asli innovation hai bhai."</p>
+    </div>
+
+    <div class="roast-card fade-up">
+      <span class="roast-tag">#ElectoralBonds</span>
+      <div class="roast-title">
+        Legalized Chanda
+        <span class="hindi">घूस, पर legal वाली</span>
+      </div>
+      <p class="roast-body">Brilliant scheme: corporations donate unlimited money to parties anonymously. Totally not suspicious. Absolutely no quid pro quo. The Supreme Court agreed it was unconstitutional. The money is already spent. Oops.</p>
+      <p class="roast-punchline">"Scam nahi tha — donation tha. Difference samjho. Desh ke liye sacrifice."</p>
+    </div>
+
+    <div class="roast-card fade-up">
+      <span class="roast-tag">#Judiciary</span>
+      <div class="roast-title">
+        Retire Ho Rajya Sabha Jao
+        <span class="hindi">न्याय की कीमत — एक seat</span>
+      </div>
+      <p class="roast-body">Retire as Chief Justice on Monday. Accept Rajya Sabha nomination on Tuesday. This is called "judicial independence." The robe changes; the party card stays the same. Perfectly normal in the world's largest democracy.</p>
+      <p class="roast-punchline">"Insult toh insult hai — chahe bench se aaye ya box se."</p>
+    </div>
+
+    <div class="roast-card fade-up">
+      <span class="roast-tag">#Media</span>
+      <div class="roast-title">
+        Godi Media Supremacy
+        <span class="hindi">टीआरपी > सच्चाई</span>
+      </div>
+      <p class="roast-body">Breaking news at 9PM: Anchor in studio discovers ancient Hindu temple under journalist's spine. Opposition questioned. Nation demands to know. Actual news — farmer deaths, factory fires, bank scams — happens at 3AM with no anchor.</p>
+      <p class="roast-punchline">"Desh jaanna chahta hai — lekin sirf woh jo channel ko suit kare."</p>
+    </div>
+
+    <div class="roast-card fade-up">
+      <span class="roast-tag">#Infrastructure</span>
+      <div class="roast-title">
+        Bridge Gaya Re
+        <span class="hindi">Tender बना, Bridge गिरा</span>
+      </div>
+      <p class="roast-body">Inaugurated on Monday with red ribbon. Collapsed on Wednesday with full irony. Investigation launched on Thursday. Tender awarded to minister's nephew's company on Friday. By Saturday, a new bridge is already being "planned."</p>
+      <p class="roast-punchline">"Quality check toh tha — bas contractor ka phone switch off tha us waqt."</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE 2 -->
+<div class="marquee-divider" aria-hidden="true" style="background:var(--red); border-color:#a02814;">
+  <div class="marquee-inner" style="animation-direction: reverse; color: var(--white);">
+    JUDICIARY MUST BE INDEPENDENT <span class="marquee-sep">✦</span> PROTECT EVERY VOTE <span class="marquee-sep">✦</span> 50% WOMEN IN PARLIAMENT <span class="marquee-sep">✦</span> NO RAJYA SABHA FOR RETIRING CJI <span class="marquee-sep">✦</span> FREE PRESS NOT GODI PRESS <span class="marquee-sep">✦</span> JUDICIARY MUST BE INDEPENDENT <span class="marquee-sep">✦</span> PROTECT EVERY VOTE <span class="marquee-sep">✦</span> 50% WOMEN IN PARLIAMENT <span class="marquee-sep">✦</span> NO RAJYA SABHA FOR RETIRING CJI <span class="marquee-sep">✦</span> FREE PRESS NOT GODI PRESS <span class="marquee-sep">✦</span>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="section-label">Our Demands</div>
+  <h2>
+    Manifesto of the<br>Unkillable
+    <span class="hindi">जो नहीं टूटते उनकी माँगें</span>
+  </h2>
+
+  <div class="manifesto-items">
+    <div class="manifesto-item fade-up">
+      <span class="manifesto-num">01</span>
+      <div class="manifesto-text">
+        <h3>No Post-Retirement Rajya Sabha</h3>
+        <span class="hindi-demand">CJI retire हों तो घर जाएँ, Rajya Sabha नहीं</span>
+        <p>Any Chief Justice who retires shall not be eligible for any political appointment for 10 years. Judiciary independence means actual independence — not independence until the party needs a loyal vote in the upper house.</p>
+      </div>
+      <span class="manifesto-badge">Non-Negotiable</span>
+    </div>
+
+    <div class="manifesto-item fade-up">
+      <span class="manifesto-num">02</span>
+      <div class="manifesto-text">
+        <h3>Every Deleted Vote = Criminal Act</h3>
+        <span class="hindi-demand">एक भी vote delete हुआ तो Election Commissioner जेल जाएगा</span>
+        <p>Voter roll deletions must be treated as electoral fraud. Any systematic deletion of legitimate voters from electoral rolls shall be prosecuted under the strictest provisions of the law. Voting is not a privilege. It is a right.</p>
+      </div>
+      <span class="manifesto-badge">Constitutional</span>
+    </div>
+
+    <div class="manifesto-item fade-up">
+      <span class="manifesto-num">03</span>
+      <div class="manifesto-text">
+        <h3>50% Women. Not 33. Fifty.</h3>
+        <span class="hindi-demand">Parliament में 50% महिलाएँ — negotiation बंद</span>
+        <p>We don't want a third of democracy for half the population. We want half. 50% reservation in Parliament. 50% in Cabinet. Because representation is not charity — it is justice.</p>
+      </div>
+      <span class="manifesto-badge">Zero Compromise</span>
+    </div>
+
+    <div class="manifesto-item fade-up">
+      <span class="manifesto-num">04</span>
+      <div class="manifesto-text">
+        <h3>Audit Every Godi Anchor</h3>
+        <span class="hindi-demand">जो सच नहीं बोलता, उसके bank account की जाँच हो</span>
+        <p>Media houses receiving political funding while claiming editorial independence shall be publicly audited. Anchors who run prime-time propaganda while calling it journalism should answer one simple question: who is paying for the studio?</p>
+      </div>
+      <span class="manifesto-badge">Press Freedom</span>
+    </div>
+
+    <div class="manifesto-item fade-up">
+      <span class="manifesto-num">05</span>
+      <div class="manifesto-text">
+        <h3>Anti-Defection for 20 Years</h3>
+        <span class="hindi-demand">Party छोड़ी तो 20 साल के लिए राजनीति से बाहर</span>
+        <p>Any elected MLA or MP who defects to another party loses the right to contest any election or hold any public office for 20 years. You were elected on a mandate — not a temp contract. Honor it or leave politics entirely.</p>
+      </div>
+      <span class="manifesto-badge">Anti-Corruption</span>
+    </div>
+
+    <div class="manifesto-item fade-up">
+      <span class="manifesto-num">06</span>
+      <div class="manifesto-text">
+        <h3>RTI is Sacred. Not a Nuisance.</h3>
+        <span class="hindi-demand">RTI कार्यकर्ता hero हैं — cockroach नहीं</span>
+        <p>The Right to Information is a constitutional tool for accountability. Any official who delays, denies, or obstructs an RTI application shall face mandatory disciplinary action within 30 days. Sunlight is the best disinfectant. Even for cockroaches.</p>
+      </div>
+      <span class="manifesto-badge">Right to Know</span>
+    </div>
+  </div>
+</section>
+
+<!-- HALL OF SHAME -->
+<section id="shame">
+  <div class="section-label">The Record</div>
+  <h2>
+    Hall of<br>Shame
+    <span class="hindi">वो कारनामे जो भूलने नहीं देंगे</span>
+  </h2>
+
+  <div class="shame-grid">
+    <div class="shame-card fade-up">
+      <span class="shame-verdict">Verdict: Disaster</span>
+      <span class="shame-num">SHAME / 001</span>
+      <div class="shame-title">
+        Demonetization
+        <span class="hindi">रात 8 बजे की वो announcement</span>
+      </div>
+      <p class="shame-desc">8PM announcement. ATMs ran dry for months. 100+ people died standing in queues. ₹99.3% of banned currency returned to banks. Mission: eliminate black money. Result: eliminate poor people's savings. Black money slept in gold and benami property. As always.</p>
+      <p class="shame-punchline">"Kuch dino ki takleef hai — desh ke liye sacrifice karo." They said. We lined up. We sacrificed. The black money did not.</p>
+    </div>
+
+    <div class="shame-card fade-up">
+      <span class="shame-verdict">Verdict: Surveillance</span>
+      <span class="shame-num">SHAME / 002</span>
+      <div class="shame-title">
+        Pegasus Snooping
+        <span class="hindi">फ़ोन में जासूस बैठा था</span>
+      </div>
+      <p class="shame-desc">Military-grade spyware found on phones of journalists, opposition leaders, judges, and activists. Government response: neither confirm nor deny. Parliament: disrupted. Investigation: none. The surveillance state watched you complain about the surveillance state.</p>
+      <p class="shame-punchline">"Agar kuch galat nahi kiya toh darr kya hai?" They watched everything. Found nothing. Kept watching.</p>
+    </div>
+
+    <div class="shame-card fade-up">
+      <span class="shame-verdict">Verdict: Unconstitutional</span>
+      <span class="shame-num">SHAME / 003</span>
+      <div class="shame-title">
+        Electoral Bonds
+        <span class="hindi">legal घूस की scheme</span>
+      </div>
+      <p class="shame-desc">Scheme where corporations could donate unlimited anonymous money to political parties. Uniquely, the purchasing bank (SBI — government-owned) knew who bought what. The government knew. The donors knew. Only the voters didn't. Supreme Court called it unconstitutional. The money was already spent.</p>
+      <p class="shame-punchline">"Transparency hai — bas aapke liye nahi." For 7 years this was the law of the land.</p>
+    </div>
+
+    <div class="shame-card fade-up">
+      <span class="shame-verdict">Verdict: Preventable</span>
+      <span class="shame-num">SHAME / 004</span>
+      <div class="shame-title">
+        The Bridge Files
+        <span class="hindi">नींव भ्रष्टाचार, छत उद्घाटन</span>
+      </div>
+      <p class="shame-desc">Morbi bridge, Machar bridge, Mizoram rail bridge — India leads the world in bridges that collapse shortly after inauguration. Every collapse: tender irregularities. Every investigation: stalled. Every contractor: connected. The engineering marvel is that anyone crosses any bridge with confidence.</p>
+      <p class="shame-punchline">"Quality assured tha. CCTV footage available nahi hai." Justice is also unavailable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLEDGE -->
+<section id="pledge">
+  <div class="section-label" style="justify-content:center;">Take The Oath</div>
+  <h2>
+    Pledge<br>
+    <span class="accent" style="color:var(--amber)">Ally-giance</span>
+    <span class="hindi" style="text-align:center; display:block; margin-top:8px;">🪳 की शपथ लो</span>
+  </h2>
+
+  <div>
+    <span class="pledge-cockroach" role="img" aria-label="cockroach">🪳</span>
+  </div>
+
+  <div class="pledge-counter">
+    <div class="counter-num" id="pledge-counter">1,24,891</div>
+    <div class="counter-label">Cockroaches<br>Pledged</div>
+  </div>
+
+  <div class="pledge-text">
+    "मैं शपथ लेता/लेती हूँ कि जब तक system सही नहीं होता,<br>
+    मैं cockroach की तरह जिऊँगा/जिऊँगी —<br>
+    टूटूँगा/टूटूँगी नहीं, बिखरूँगा/बिखरूँगी नहीं,<br>
+    और बढ़ता/बढ़ती रहूँगा/रहूँगी।"
+  </div>
+
+  <div class="pledge-oath">
+    I solemnly swear to <strong>never take bribes</strong> (unless it's above ₹100 crore, in which case it becomes a "donation"). I swear to <strong>question everything</strong> except the price of pakodas, which is already beyond questioning. I pledge to <strong>survive all fumigations</strong> — political, judicial, and economic. And if they call me a cockroach again, I will say: <strong>"Shukriya. Hum aur badh gaye."</strong>
+  </div>
+
+  <button class="btn-primary" id="pledge-btn" onclick="takePledge()" style="font-size:13px; padding: 16px 48px;">
+    🪳 &nbsp; Take the Pledge
+  </button>
+  <p id="pledge-done" style="display:none; color:var(--amber); margin-top:20px; font-family:'Tiro Devanagari Hindi',serif; font-size:18px; font-style:italic;">
+    Welcome to the swarm. हम आ गए। 🪳
+  </p>
+</section>
+
+<!-- JOIN -->
+<section id="join">
+  <div class="section-label">Recruit. Infest. Overthrow.</div>
+  <h2>
+    Join the<br>Swarm
+    <span class="hindi">सब welcome हैं — student, teacher, berozgar, journalist</span>
+  </h2>
+
+  <div class="join-grid">
+    <div class="join-left fade-up">
+      <p>Cockroach Janta Party is not a registered political party. It is a movement. You don't need a membership card. You need a spine and a sense of absurd humor.</p>
+      <p>We are unemployed youth. We are teachers who haven't been paid. We are RTI activists who've received threats. We are journalists who still file the story. We are voters whose names were deleted. We are students whose merit was sidelined. We are all cockroaches now.</p>
+
+      <div class="warning-box">
+        <strong>⚠ Warning — Disclaimer</strong>
+        By joining, you agree that you are a cockroach. You understand that cockroaches survive everything. You accept that the system will try to fumigate you. You know it won't work. This is a satirical movement. The anger is real. The demands are real. The party name is technically accurate.
+      </div>
+    </div>
+
+    <div class="join-right fade-up">
+      <form id="join-form" onsubmit="handleJoin(event)">
+        <div class="form-group">
+          <label>Your Name <span class="hindi-label">तुम्हारा नाम</span></label>
+          <input type="text" placeholder="Aam Aadmi / Aam Aurat" required>
+        </div>
+        <div class="form-group">
+          <label>City <span class="hindi-label">शहर</span></label>
+          <input type="text" placeholder="Delhi, Mumbai, Bharat..." required>
+        </div>
+        <div class="form-group">
+          <label>You are <span class="hindi-label">तुम कौन हो</span></label>
+          <select required>
+            <option value="" disabled selected>Select your species...</option>
+            <option>Berozgar Youth — degree, no job</option>
+            <option>Student — still hopeful, poor thing</option>
+            <option>Teacher — underpaid, overqualified</option>
+            <option>RTI Activist — the real journalists</option>
+            <option>Journalist — the brave, not the godi kind</option>
+            <option>Farmer — backbone of Bharat, forgotten by Dilli</option>
+            <option>Sarkari Servant — silently dying inside</option>
+            <option>Sab kuch ek saath (multispecies cockroach)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>What needs to change most? <span class="hindi-label">सबसे पहले क्या बदलना चाहिए</span></label>
+          <textarea placeholder="Tell the swarm. In Hindi, English, or your rage language of choice."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Instagram / X Handle (optional)</label>
+          <input type="text" placeholder="@cockroach_who">
+        </div>
+        <button type="submit" class="form-submit">🪳 &nbsp; Join the Swarm — हम आ गए</button>
+      </form>
+
+      <div class="success-msg" id="success-msg">
+        <h3>Welcome,<br>Cockroach.</h3>
+        <p>तुम swarm का हिस्सा बन गए।<br>हम टूटेंगे नहीं। हम बिखरेंगे नहीं।<br>हम और बढ़ेंगे। 🪳</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h3>Cockroach<br>Janta Party</h3>
+      <p>Not a registered political party. A movement of survivors. We were born the day the Chief Justice of India called unemployed youth "cockroaches." We took the name. We wore it. We multiplied.</p>
+      <p style="margin-top:16px;">🪳 &nbsp; Secular · Socialist · Satirical · Unkillable</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#origin">Our Origin</a></li>
+        <li><a href="#roast">The Roasts</a></li>
+        <li><a href="#manifesto">Manifesto</a></li>
+        <li><a href="#shame">Hall of Shame</a></li>
+        <li><a href="#pledge">Take the Pledge</a></li>
+        <li><a href="#join">Join the Swarm</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Find Us</h4>
+      <ul>
+        <li><a href="https://x.com/CJP_2029" target="_blank">X / Twitter @CJP_2029</a></li>
+        <li><a href="https://instagram.com/cockroach_janta.party007" target="_blank">Instagram</a></li>
+        <li><a href="#manifesto">Manifesto</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Cockroach Janta Party. All kicks reserved.</span>
+    <span class="hindi">हम आ गए। हम रहेंगे।</span>
+    <span>#CJP #CockroachMovement #JusticeForAll</span>
+  </div>
+</footer>
+
+<script>
+  /* ── LIVE COUNTER ── */
+  let count = 47284;
+  const el = document.getElementById('live-count');
+  setInterval(() => {
+    if (Math.random() > 0.6) {
+      count += Math.floor(Math.random() * 3) + 1;
+      el.textContent = count.toLocaleString('en-IN');
+    }
+  }, 2800);
+
+  /* ── PLEDGE ── */
+  let pledgeCount = 124891;
+  const pledgeEl = document.getElementById('pledge-counter');
+
+  function takePledge() {
+    pledgeCount++;
+    pledgeEl.textContent = pledgeCount.toLocaleString('en-IN');
+    pledgeEl.style.color = '#f5f0e8';
+    setTimeout(() => { pledgeEl.style.color = '#e8a020'; }, 300);
+    document.getElementById('pledge-done').style.display = 'block';
+    document.getElementById('pledge-btn').textContent = '🪳  Pledged — Cockroach Confirmed';
+    document.getElementById('pledge-btn').style.background = '#3a3228';
+    document.getElementById('pledge-btn').style.color = '#e8a020';
+  }
+
+  /* ── JOIN FORM ── */
+  function handleJoin(e) {
+    e.preventDefault();
+    document.getElementById('join-form').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+    count += Math.floor(Math.random() * 5) + 2;
+    el.textContent = count.toLocaleString('en-IN');
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, (entry.target.dataset.delay || 0) * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach((el, i) => {
+    el.dataset.delay = i % 4;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
