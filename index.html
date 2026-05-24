@@ -3,796 +3,682 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cockroach Janta Party</title>
+<title>We Cockroaches | The Movement lives on.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tiro+Devanagari+Hindi:ital@0;1&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Tiro+Devanagari+Hindi:ital@0;1&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 
-:root {
-  --ink:    #0d0c0a;
-  --paper:  #f2ede4;
-  --amber:  #d4890a;
-  --amber2: #f0a020;
-  --red:    #b82c18;
-  --ash:    #1a1916;
-  --mist:   #2e2c28;
-  --bone:   #c8c0b0;
-  --mono: 'DM Mono', monospace;
-  --display: 'Bebas Neue', sans-serif;
-  --hindi: 'Tiro Devanagari Hindi', serif;
+:root{
+  --ink:#0e0d0b;
+  --paper:#f0ebe0;
+  --paper2:#e8e2d4;
+  --amber:#c8780a;
+  --amber2:#e8960e;
+  --red:#b82010;
+  --stamp-red:#cc2200;
+  --blue:#1a2744;
+  --bone:#c4bfb4;
+  --ghost:rgba(14,13,11,0.06);
+  --C:'Courier Prime',monospace;
+  --A:'Archivo Black',sans-serif;
+  --B:'Barlow Condensed',sans-serif;
+  --H:'Tiro Devanagari Hindi',serif;
 }
 
-body {
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--mono);
-  overflow-x: hidden;
-  cursor: default;
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--C);
+  overflow-x:hidden;
 }
 
-/* grain */
-body::after {
-  content:'';
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:9000;
-  opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+/* GRAIN */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;
+  opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 
 /* ── TICKER ── */
-.ticker {
-  background: var(--amber);
-  color: var(--ink);
-  overflow: hidden;
-  padding: 7px 0;
-  border-bottom: 1px solid var(--amber2);
+.ticker{
+  background:var(--blue);color:var(--paper);
+  overflow:hidden;padding:8px 0;
+  border-bottom:1px solid #0a1020;
 }
-.ticker-inner {
-  display: inline-block;
-  white-space: nowrap;
-  animation: roll 28s linear infinite;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: .18em;
-  text-transform: uppercase;
+.ticker-t{
+  display:inline-block;white-space:nowrap;
+  animation:roll 32s linear infinite;
+  font-family:var(--C);font-size:10px;letter-spacing:.18em;
 }
-@keyframes roll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes roll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── NAV ── */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 48px;
-  height: 64px;
-  border-bottom: 1px solid var(--mist);
-  position: sticky;
-  top: 0;
-  background: rgba(13,12,10,.96);
-  backdrop-filter: blur(12px);
-  z-index: 500;
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 52px;height:60px;
+  border-bottom:1px solid #1e1c18;
+  position:sticky;top:0;
+  background:rgba(14,13,11,.97);
+  backdrop-filter:blur(10px);
+  z-index:500;
 }
-.nav-mark {
-  font-family: var(--display);
-  font-size: 20px;
-  letter-spacing: .1em;
-  color: var(--amber);
-  text-decoration: none;
+.nav-logo{
+  font-family:var(--B);font-weight:900;font-size:16px;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--paper);text-decoration:none;
 }
-.nav-links {
-  display: flex;
-  gap: 36px;
-  list-style: none;
+.nav-logo span{color:var(--amber);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{
+  font-family:var(--C);font-size:11px;letter-spacing:.12em;
+  color:var(--bone);text-decoration:none;opacity:.6;
+  transition:opacity .2s;
 }
-.nav-links a {
-  color: var(--bone);
-  text-decoration: none;
-  font-size: 10px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  transition: color .2s;
+.nav-links a:hover{opacity:1;}
+.nav-cta{
+  font-family:var(--C);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink);
+  background:var(--amber);border:none;
+  padding:9px 22px;cursor:pointer;text-decoration:none;
+  transition:background .15s;display:inline-block;
 }
-.nav-links a:hover { color: var(--paper); }
-.nav-cta {
-  font-size: 10px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--ink);
-  background: var(--amber);
-  border: none;
-  padding: 10px 24px;
-  font-family: var(--mono);
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background .15s;
-}
-.nav-cta:hover { background: var(--amber2); }
+.nav-cta:hover{background:var(--amber2);}
 
 /* ── HERO ── */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 48px 72px;
-  position: relative;
-  overflow: hidden;
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;
+  padding:80px 52px 80px;
+  position:relative;overflow:hidden;
+  border-bottom:1px solid #1e1c18;
 }
 
-.hero-ghost {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -52%);
-  font-family: var(--display);
-  font-size: clamp(160px, 28vw, 400px);
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(212,137,10,.05);
-  letter-spacing: -.02em;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
+.case-header{
+  display:flex;align-items:center;gap:16px;
+  margin-bottom:52px;
+}
+.case-num{
+  font-family:var(--C);font-size:11px;letter-spacing:.15em;
+  color:var(--amber);opacity:.8;
+}
+.case-line{flex:1;height:1px;background:#2a2820;}
+
+.hero-h{
+  font-family:var(--A);
+  font-size:clamp(64px,11vw,160px);
+  line-height:.9;letter-spacing:-.01em;
+  position:relative;z-index:2;
+  max-width:900px;
+}
+.hero-h em{font-style:normal;color:var(--amber);}
+
+.hero-sub{
+  margin-top:40px;
+  font-family:var(--C);font-size:15px;
+  line-height:1.9;color:var(--bone);
+  max-width:520px;
+  position:relative;z-index:2;
+}
+.hero-sub strong{color:var(--paper);}
+
+.hero-bottom{
+  display:flex;align-items:flex-end;
+  justify-content:space-between;
+  margin-top:72px;padding-top:40px;
+  border-top:1px solid #1e1c18;
+  position:relative;z-index:2;
+}
+.hero-count{
+  display:flex;flex-direction:column;gap:4px;
+}
+.hero-count-n{
+  font-family:var(--A);font-size:56px;
+  color:var(--amber);line-height:1;
+}
+.hero-count-l{
+  font-family:var(--C);font-size:10px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--bone);opacity:.5;
+}
+.hero-ctas{display:flex;gap:12px;align-items:center;}
+.btn{
+  font-family:var(--C);font-size:11px;
+  letter-spacing:.15em;text-transform:uppercase;
+  padding:13px 28px;text-decoration:none;
+  display:inline-block;cursor:pointer;border:none;
+  transition:all .15s;
+}
+.btn-fill{background:var(--amber);color:var(--ink);font-weight:700;}
+.btn-fill:hover{background:var(--amber2);}
+.btn-outline{
+  background:transparent;color:var(--paper);
+  border:1px solid #2a2820;
+}
+.btn-outline:hover{border-color:var(--bone);}
+
+/* STAMP */
+.stamp{
+  position:absolute;
+  font-family:var(--B);font-weight:900;
+  font-size:clamp(18px,3vw,32px);
+  letter-spacing:.25em;text-transform:uppercase;
+  border:3px solid;padding:8px 20px;
+  opacity:0;transform:rotate(-12deg) scale(1.3);
+  transition:opacity .4s ease,transform .5s cubic-bezier(.2,.8,.3,1);
+  pointer-events:none;
+}
+.stamp.filed{
+  top:60px;right:52px;
+  color:var(--blue);border-color:var(--blue);
+  font-size:clamp(14px,2vw,22px);
+}
+.stamp.show{opacity:.7;transform:rotate(-12deg) scale(1);}
+
+/* TYPEWRITER */
+.typewriter{overflow:hidden;white-space:nowrap;width:0;}
+.typewriter.typed{
+  animation:type .9s steps(30,end) forwards;
+}
+@keyframes type{from{width:0}to{width:100%}}
+
+/* ── BANDS ── */
+.band{
+  overflow:hidden;padding:13px 0;
+  border-top:1px solid #1e1c18;
+  border-bottom:1px solid #1e1c18;
+}
+.band-i{
+  display:inline-block;white-space:nowrap;
+  font-family:var(--B);font-weight:700;
+  font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--bone);opacity:.18;
+  animation:roll 24s linear infinite;
+}
+.band-i span{margin:0 36px;}
+.band.rev .band-i{animation-direction:reverse;}
+.band.paper{
+  background:var(--paper2);
+  border-color:rgba(0,0,0,.1);
+}
+.band.paper .band-i{color:var(--ink);opacity:.12;}
+
+/* ── INCIDENT ── */
+#incident{
+  background:var(--paper);color:var(--ink);
+  padding:100px 52px;
+  border-bottom:4px solid var(--ink);
+  position:relative;overflow:hidden;
+}
+.incident-layout{
+  display:grid;grid-template-columns:220px 1fr;
+  gap:80px;align-items:start;
+}
+.incident-sidebar{
+  position:sticky;top:100px;
+}
+.incident-case{
+  font-family:var(--C);font-size:10px;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--stamp-red);margin-bottom:12px;display:block;
+}
+.incident-date-big{
+  font-family:var(--A);font-size:72px;
+  line-height:.85;color:var(--ink);
+  display:block;margin-bottom:20px;
+}
+.incident-meta{
+  font-family:var(--C);font-size:11px;
+  line-height:1.9;color:#4a4438;
+  border-top:1px solid rgba(0,0,0,.1);
+  padding-top:16px;
 }
 
-.hero-eyebrow {
-  font-size: 10px;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: var(--amber);
-  margin-bottom: 28px;
+.incident-quote{
+  margin-top:28px;padding:20px;
+  border-left:3px solid var(--stamp-red);
+  background:rgba(184,32,16,.05);
+}
+.incident-quote p{
+  font-family:var(--C);font-style:italic;
+  font-size:13px;line-height:1.9;color:#3a3028;
+}
+.incident-quote cite{
+  display:block;margin-top:10px;
+  font-size:9px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--stamp-red);
+  font-style:normal;
 }
 
-.hero-h1 {
-  font-family: var(--display);
-  font-size: clamp(80px, 13vw, 192px);
-  line-height: .9;
-  letter-spacing: -.01em;
-  position: relative;
-  z-index: 2;
+.incident-body p{
+  font-family:var(--C);font-size:15px;
+  line-height:2;color:#2a2420;margin-bottom:24px;
 }
-.hero-h1 em {
-  font-style: normal;
-  color: var(--amber);
-  display: block;
-}
-.hero-h1 .deva {
-  font-family: var(--hindi);
-  font-size: .28em;
-  color: var(--bone);
-  display: block;
-  margin-top: 20px;
-  line-height: 1.5;
-  font-weight: 400;
-  letter-spacing: .01em;
+.incident-body p:last-child{margin-bottom:0;}
+.incident-pull{
+  font-family:var(--H);font-size:24px;
+  line-height:1.7;color:var(--ink);
+  font-style:italic;
+  padding-bottom:28px;margin-bottom:28px;
+  border-bottom:1px solid rgba(0,0,0,.1);
 }
 
-.hero-bottom {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  margin-top: 80px;
-  padding-top: 40px;
-  border-top: 1px solid var(--mist);
-  align-items: end;
+/* STAMP ON PAPER */
+.paper-stamp{
+  position:absolute;bottom:52px;right:52px;
+  font-family:var(--B);font-weight:900;
+  font-size:28px;letter-spacing:.3em;
+  border:4px solid var(--stamp-red);
+  padding:10px 24px;color:var(--stamp-red);
+  opacity:0;transform:rotate(8deg) scale(1.2);
+  transition:opacity .5s,transform .5s cubic-bezier(.2,.8,.3,1);
 }
-.hero-sub {
-  font-size: 14px;
-  line-height: 2;
-  color: var(--bone);
-  max-width: 440px;
-}
-.hero-sub strong { color: var(--paper); font-weight: 500; }
+.paper-stamp.show{opacity:.65;transform:rotate(8deg) scale(1);}
 
-.hero-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 24px;
+/* ── EVIDENCE / ROASTS ── */
+#evidence{
+  background:var(--ink);
+  padding:100px 52px;
 }
-.hero-count-block {
-  text-align: right;
+#evidence .sec-label{
+  font-family:var(--C);font-size:10px;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:20px;
 }
-.hero-count-num {
-  font-family: var(--display);
-  font-size: 64px;
-  color: var(--amber);
-  line-height: 1;
-  display: block;
-  letter-spacing: -.01em;
-}
-.hero-count-label {
-  font-size: 10px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--bone);
-  opacity: .6;
-  margin-top: 6px;
-}
-.hero-ctas {
-  display: flex;
-  gap: 12px;
-}
-.btn {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  padding: 13px 28px;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  transition: all .15s;
-}
-.btn-fill { background: var(--amber); color: var(--ink); font-weight: 500; }
-.btn-fill:hover { background: var(--amber2); }
-.btn-line { background: transparent; color: var(--paper); border: 1px solid var(--mist); }
-.btn-line:hover { border-color: var(--bone); }
-
-/* ── BAND ── */
-.band {
-  overflow: hidden;
-  padding: 14px 0;
-  border-top: 1px solid var(--mist);
-  border-bottom: 1px solid var(--mist);
-}
-.band-inner {
-  display: inline-block;
-  white-space: nowrap;
-  font-family: var(--display);
-  font-size: 15px;
-  letter-spacing: .12em;
-  color: var(--bone);
-  opacity: .25;
-  animation: roll 22s linear infinite;
-}
-.band-inner span { margin: 0 32px; }
-.band.rev .band-inner { animation-direction: reverse; }
-
-/* ── SECTION SHELL ── */
-.section {
-  padding: 120px 48px;
-}
-.section-label {
-  font-size: 10px;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: var(--amber);
-  margin-bottom: 20px;
-}
-.section-h {
-  font-family: var(--display);
-  font-size: clamp(52px, 8vw, 110px);
-  line-height: .92;
-  letter-spacing: -.01em;
-  margin-bottom: 80px;
-}
-.section-h .deva {
-  font-family: var(--hindi);
-  font-size: .32em;
-  color: var(--bone);
-  display: block;
-  margin-top: 12px;
-  font-weight: 400;
-  line-height: 1.6;
-  opacity: .7;
+#evidence .sec-h{
+  font-family:var(--A);
+  font-size:clamp(48px,7vw,96px);
+  line-height:.92;margin-bottom:72px;
 }
 
-/* ── ORIGIN ── */
-#origin { background: var(--ash); }
+.evidence-list{
+  display:flex;flex-direction:column;gap:0;
+  border-top:1px solid #1e1c18;
+}
+.ev-item{
+  display:grid;
+  grid-template-columns:100px 280px 1fr;
+  gap:48px;
+  padding:56px 0;
+  border-bottom:1px solid #1e1c18;
+  align-items:start;
+  opacity:0;transform:translateX(-20px);
+  transition:opacity .6s ease,transform .6s ease;
+}
+.ev-item.in{opacity:1;transform:none;}
 
-.origin-layout {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 80px;
-  align-items: start;
+.ev-code{
+  font-family:var(--C);font-size:9px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber);opacity:.6;padding-top:4px;
+  line-height:1.8;
 }
-.origin-date {
-  position: sticky;
-  top: 100px;
+.ev-title{
+  font-family:var(--A);
+  font-size:clamp(28px,3.5vw,48px);
+  line-height:.95;color:var(--paper);
 }
-.origin-date-big {
-  font-family: var(--display);
-  font-size: 96px;
-  line-height: .85;
-  color: var(--red);
-  display: block;
+.ev-charge{
+  font-family:var(--C);font-size:14px;
+  line-height:2;color:var(--bone);
 }
-.origin-date-sub {
-  font-size: 10px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--bone);
-  opacity: .4;
-  margin-top: 12px;
-  display: block;
-  line-height: 1.8;
-}
-.origin-quote {
-  margin-top: 36px;
-  padding: 20px;
-  border: 1px solid rgba(184,44,24,.25);
-  background: rgba(184,44,24,.06);
-}
-.origin-quote p {
-  font-size: 13px;
-  line-height: 1.9;
-  color: var(--bone);
-  font-style: italic;
-}
-.origin-quote cite {
-  display: block;
-  margin-top: 12px;
-  font-size: 9px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--red);
-  font-style: normal;
-}
-
-.origin-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.origin-pull {
-  font-family: var(--hindi);
-  font-size: 26px;
-  line-height: 1.7;
-  color: var(--paper);
-  font-style: italic;
-  padding-bottom: 40px;
-  margin-bottom: 40px;
-  border-bottom: 1px solid var(--mist);
-}
-.origin-body p {
-  font-size: 14px;
-  line-height: 2;
-  color: var(--bone);
-  margin-bottom: 24px;
-  max-width: 620px;
-}
-.origin-body p:last-child { margin-bottom: 0; }
-
-/* ── ROASTS ── */
-#roast { background: var(--ink); }
-
-.roast-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border-top: 1px solid var(--mist);
-}
-.roast-item {
-  display: grid;
-  grid-template-columns: 120px 1fr 1fr;
-  gap: 48px;
-  padding: 52px 0;
-  border-bottom: 1px solid var(--mist);
-  align-items: start;
-  transition: background .2s;
-}
-.roast-item:hover { background: rgba(255,255,255,.015); }
-
-.roast-tag {
-  font-size: 9px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--amber);
-  padding-top: 6px;
-}
-.roast-title {
-  font-family: var(--display);
-  font-size: clamp(32px, 4vw, 52px);
-  line-height: .95;
-  color: var(--paper);
-}
-.roast-punch {
-  font-size: 13px;
-  line-height: 1.9;
-  color: var(--bone);
-  padding-top: 4px;
-}
-.roast-punch .deva-line {
-  font-family: var(--hindi);
-  font-size: 15px;
-  color: var(--amber);
-  font-style: italic;
-  display: block;
-  margin-top: 16px;
+.ev-verdict{
+  font-family:var(--H);font-size:15px;
+  color:var(--amber);font-style:italic;
+  margin-top:16px;display:block;
+  line-height:1.7;
 }
 
 /* ── MANIFESTO ── */
-#manifesto {
-  background: var(--paper);
-  color: var(--ink);
+#manifesto{
+  background:var(--paper);color:var(--ink);
+  padding:100px 52px;
 }
-#manifesto .section-label { color: var(--red); }
-#manifesto .section-h { color: var(--ink); }
-#manifesto .section-h .deva { color: #5a5040; }
-#manifesto .band { border-color: rgba(0,0,0,.08); }
-#manifesto .band-inner { color: var(--ink); opacity: .12; }
+#manifesto .sec-label{
+  font-family:var(--C);font-size:10px;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--stamp-red);margin-bottom:20px;
+}
+#manifesto .sec-h{
+  font-family:var(--A);
+  font-size:clamp(48px,7vw,96px);
+  line-height:.92;color:var(--ink);margin-bottom:16px;
+}
+#manifesto .sec-sub{
+  font-family:var(--H);font-size:20px;
+  color:#5a4a38;font-style:italic;
+  margin-bottom:72px;line-height:1.6;
+}
 
-.demands {
-  border-top: 2px solid rgba(0,0,0,.1);
+.clauses{border-top:2px solid rgba(0,0,0,.1);}
+.clause{
+  display:grid;grid-template-columns:80px 1fr;
+  gap:36px;padding:44px 0;
+  border-bottom:1px solid rgba(0,0,0,.08);
+  align-items:start;
+  opacity:0;transform:translateY(20px);
+  transition:opacity .55s ease,transform .55s ease;
 }
-.demand {
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 40px;
-  padding: 44px 0;
-  border-bottom: 1px solid rgba(0,0,0,.08);
-  align-items: start;
-  transition: padding-left .25s;
+.clause.in{opacity:1;transform:none;}
+.clause:hover{padding-left:6px;}
+.clause-n{
+  font-family:var(--A);font-size:80px;
+  line-height:1;color:rgba(0,0,0,.07);
 }
-.demand:hover { padding-left: 8px; }
-
-.demand-n {
-  font-family: var(--display);
-  font-size: 80px;
-  line-height: 1;
-  color: rgba(0,0,0,.07);
+.clause-body h3{
+  font-family:var(--B);font-weight:900;
+  font-size:clamp(22px,3vw,36px);
+  color:var(--ink);margin-bottom:8px;
+  text-transform:uppercase;letter-spacing:.02em;
 }
-.demand-body h3 {
-  font-family: var(--display);
-  font-size: clamp(28px, 3.5vw, 44px);
-  line-height: 1;
-  color: var(--ink);
-  margin-bottom: 10px;
+.clause-deva{
+  font-family:var(--H);font-size:15px;
+  color:var(--stamp-red);font-style:italic;
+  margin-bottom:10px;display:block;line-height:1.6;
 }
-.demand-body .deva-demand {
-  font-family: var(--hindi);
-  font-size: 16px;
-  color: var(--red);
-  line-height: 1.6;
-  margin-bottom: 14px;
-  font-style: italic;
-}
-.demand-body p {
-  font-size: 13px;
-  line-height: 1.9;
-  color: #5a5040;
-  max-width: 580px;
+.clause-body p{
+  font-family:var(--C);font-size:13px;
+  line-height:1.95;color:#5a4a38;max-width:560px;
 }
 
 /* ── SHAME ── */
-#shame { background: var(--ash); }
+#shame{
+  background:#0a0908;
+  padding:100px 52px;
+  border-top:1px solid #1e1c18;
+}
+#shame .sec-label{
+  font-family:var(--C);font-size:10px;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--stamp-red);margin-bottom:20px;
+}
+#shame .sec-h{
+  font-family:var(--A);
+  font-size:clamp(48px,7vw,96px);
+  line-height:.92;margin-bottom:72px;
+}
 
-.shame-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--mist);
-  border: 1px solid var(--mist);
+.shame-files{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:#1e1c18;
+  border:1px solid #1e1c18;
 }
-.shame-card {
-  background: var(--ash);
-  padding: 48px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  transition: background .2s;
-  position: relative;
+.shame-file{
+  background:#0a0908;padding:48px 40px;
+  display:flex;flex-direction:column;gap:14px;
+  position:relative;overflow:hidden;
+  opacity:0;transform:translateY(16px);
+  transition:opacity .55s,transform .55s;
 }
-.shame-card:hover { background: #202018; }
-.shame-n {
-  font-size: 9px;
-  letter-spacing: .22em;
-  color: var(--red);
-  opacity: .5;
+.shame-file.in{opacity:1;transform:none;}
+.shame-file:hover{background:#0f0e0c;}
+
+.shame-x{
+  width:40px;height:40px;position:relative;
+  margin-bottom:4px;flex-shrink:0;
 }
-.shame-title {
-  font-family: var(--display);
-  font-size: clamp(36px, 4vw, 56px);
-  line-height: .95;
-  color: var(--paper);
+.shame-x svg{width:40px;height:40px;}
+.shame-x .x-path{
+  stroke:var(--stamp-red);stroke-width:3;
+  fill:none;stroke-dasharray:60;stroke-dashoffset:60;
+  transition:stroke-dashoffset .8s ease .2s;
 }
-.shame-body {
-  font-size: 13px;
-  line-height: 1.9;
-  color: var(--bone);
-  opacity: .7;
+.shame-file.in .x-path{stroke-dashoffset:0;}
+
+.shame-cn{
+  font-family:var(--C);font-size:9px;
+  letter-spacing:.2em;color:var(--stamp-red);opacity:.5;
 }
-.shame-verdict {
-  font-size: 11px;
-  color: var(--amber);
-  font-style: italic;
-  margin-top: 8px;
-  padding-top: 16px;
-  border-top: 1px solid var(--mist);
-  line-height: 1.7;
+.shame-title{
+  font-family:var(--A);
+  font-size:clamp(28px,3.5vw,48px);
+  line-height:.95;color:var(--paper);
+}
+.shame-body{
+  font-family:var(--C);font-size:13px;
+  line-height:1.9;color:var(--bone);opacity:.7;
+}
+.shame-close{
+  font-family:var(--C);font-size:12px;
+  color:var(--amber);font-style:italic;
+  margin-top:8px;padding-top:16px;
+  border-top:1px solid #1e1c18;
+  line-height:1.7;
 }
 
 /* ── PLEDGE ── */
-#pledge {
-  background: var(--ink);
-  text-align: center;
-  padding: 140px 48px;
-  border-top: 1px solid var(--mist);
+#pledge{
+  background:var(--ink);
+  padding:140px 52px;
+  border-top:1px solid #1e1c18;
+  text-align:center;position:relative;
+  overflow:hidden;
 }
-
-.pledge-bug {
-  font-size: 72px;
-  display: inline-block;
-  margin-bottom: 48px;
-  animation: wriggle 5s ease-in-out infinite;
+.pledge-bg{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-family:var(--A);font-size:clamp(120px,20vw,280px);
+  color:transparent;
+  -webkit-text-stroke:1px rgba(200,120,10,.04);
+  pointer-events:none;user-select:none;white-space:nowrap;
+  line-height:1;
 }
-@keyframes wriggle {
-  0%,100%{transform:rotate(-4deg) translateX(0)}
+.pledge-bug{
+  font-size:72px;display:inline-block;
+  margin-bottom:40px;
+  animation:wriggle 5s ease-in-out infinite;
+}
+@keyframes wriggle{
+  0%,100%{transform:rotate(-4deg)}
   30%{transform:rotate(3deg) translateX(8px)}
   70%{transform:rotate(-2deg) translateX(-5px)}
 }
+#pledge .sec-h{
+  font-family:var(--A);
+  font-size:clamp(52px,8vw,110px);
+  line-height:.92;margin-bottom:0;text-align:center;
+}
+#pledge .sec-h em{font-style:normal;color:var(--amber);}
 
-#pledge .section-h {
-  margin-bottom: 0;
-  text-align: center;
+.pledge-count{
+  display:inline-flex;align-items:center;gap:20px;
+  border:1px solid #1e1c18;padding:20px 36px;
+  margin:48px 0;
 }
-#pledge .section-h .deva { text-align: center; }
-
-.pledge-stat {
-  display: inline-flex;
-  align-items: center;
-  gap: 20px;
-  padding: 20px 36px;
-  border: 1px solid var(--mist);
-  margin: 48px 0;
+.pledge-n{
+  font-family:var(--A);font-size:52px;
+  color:var(--amber);line-height:1;
+  min-width:140px;text-align:left;
 }
-.pledge-stat-num {
-  font-family: var(--display);
-  font-size: 56px;
-  color: var(--amber);
-  line-height: 1;
-  min-width: 160px;
-  text-align: left;
-  transition: color .3s;
-}
-.pledge-stat-label {
-  font-size: 10px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--bone);
-  opacity: .5;
-  text-align: left;
-  line-height: 1.8;
+.pledge-l{
+  font-family:var(--C);font-size:10px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--bone);opacity:.5;text-align:left;line-height:1.8;
 }
 
-.pledge-oath {
-  max-width: 540px;
-  margin: 0 auto 48px;
-  font-size: 13px;
-  line-height: 2.1;
-  color: var(--bone);
-  opacity: .55;
-  font-style: italic;
+.pledge-text{
+  max-width:500px;margin:0 auto 48px;
+  font-family:var(--C);font-size:13px;
+  line-height:2.1;color:var(--bone);
+  opacity:.55;font-style:italic;
 }
-.pledge-oath strong {
-  color: var(--amber);
-  font-style: normal;
-  opacity: 1;
+.pledge-text strong{color:var(--amber);font-style:normal;opacity:1;}
+
+#pledge-btn{
+  position:relative;overflow:hidden;
+  font-size:11px;padding:16px 52px;
+}
+.pledge-confirm{
+  display:none;margin-top:24px;
+  font-family:var(--H);font-size:20px;
+  color:var(--amber);font-style:italic;line-height:1.7;
 }
 
-#pledge-btn {
-  font-size: 11px;
-  padding: 16px 52px;
+/* STAMP OVERLAY ON FORM */
+.form-stamp-wrap{position:relative;}
+.form-stamp-overlay{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;z-index:10;opacity:0;
+  transition:opacity .3s;
 }
-
-.pledge-done {
-  display: none;
-  margin-top: 24px;
-  font-family: var(--hindi);
-  font-size: 20px;
-  color: var(--amber);
-  font-style: italic;
-  line-height: 1.7;
+.form-stamp-overlay.show{opacity:1;pointer-events:none;}
+.form-stamp-text{
+  font-family:var(--B);font-weight:900;
+  font-size:clamp(28px,4vw,52px);
+  letter-spacing:.3em;text-transform:uppercase;
+  color:var(--stamp-red);border:5px solid var(--stamp-red);
+  padding:12px 28px;
+  transform:rotate(-8deg) scale(1.2);
+  transition:transform .5s cubic-bezier(.2,.8,.3,1);
+  background:rgba(10,9,8,.85);
+  text-align:center;line-height:1.2;
 }
+.form-stamp-overlay.show .form-stamp-text{transform:rotate(-8deg) scale(1);}
 
 /* ── JOIN ── */
-#join { background: var(--mist); }
-
-.join-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 100px;
-  align-items: start;
+#join{
+  background:#0e0d0b;
+  padding:100px 52px;
+  border-top:1px solid #1e1c18;
 }
-.join-left { padding-top: 4px; }
-.join-left p {
-  font-size: 14px;
-  line-height: 2;
-  color: var(--bone);
-  margin-bottom: 24px;
+#join .sec-label{
+  font-family:var(--C);font-size:10px;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:20px;
 }
-.join-left p:last-child { margin-bottom: 0; }
-.join-left strong { color: var(--paper); font-weight: 500; }
-
-.join-note {
-  margin-top: 40px;
-  padding: 20px 24px;
-  border-left: 3px solid var(--red);
-  background: rgba(184,44,24,.06);
-}
-.join-note p {
-  font-size: 12px;
-  line-height: 1.9;
-  color: var(--bone);
-  opacity: .7;
-  margin: 0;
+#join .sec-h{
+  font-family:var(--A);
+  font-size:clamp(48px,7vw,96px);
+  line-height:.92;margin-bottom:72px;
 }
 
-/* FORM */
-.form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
+.join-layout{
+  display:grid;grid-template-columns:1fr 1.1fr;
+  gap:100px;align-items:start;
 }
-.form-field label {
-  font-size: 9px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--bone);
-  opacity: .5;
+.join-left p{
+  font-family:var(--C);font-size:14px;
+  line-height:2;color:var(--bone);margin-bottom:22px;
 }
-.form-field input,
-.form-field select,
-.form-field textarea {
-  background: var(--ash);
-  border: 1px solid #3a3830;
-  color: var(--paper);
-  font-family: var(--mono);
-  font-size: 13px;
-  padding: 13px 16px;
-  width: 100%;
-  outline: none;
-  transition: border-color .2s;
-  -webkit-appearance: none;
-  border-radius: 0;
+.join-left strong{color:var(--paper);}
+.join-note{
+  margin-top:36px;padding:18px 22px;
+  border-left:3px solid #1e1c18;
 }
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus { border-color: var(--amber); }
-.form-field select option { background: var(--ash); }
-.form-field textarea { height: 90px; resize: none; }
-.form-submit {
-  width: 100%;
-  background: var(--amber);
-  color: var(--ink);
-  border: none;
-  padding: 16px;
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background .15s;
-  margin-top: 4px;
-}
-.form-submit:hover { background: var(--amber2); }
-.form-submit:disabled {
-  opacity: .5;
-  cursor: not-allowed;
+.join-note p{
+  font-family:var(--C);font-size:12px;
+  line-height:1.9;color:var(--bone);opacity:.5;margin:0;
 }
 
-.form-error {
-  display: none;
-  font-size: 11px;
-  color: var(--red);
-  margin-top: 10px;
-  letter-spacing: .05em;
+.ff{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+.ff label{
+  font-family:var(--C);font-size:9px;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--bone);opacity:.45;
+}
+.ff input,.ff select,.ff textarea{
+  background:#1a1916;border:1px solid #2a2820;
+  color:var(--paper);font-family:var(--C);
+  font-size:13px;padding:12px 16px;width:100%;
+  outline:none;transition:border-color .2s;
+  border-radius:0;-webkit-appearance:none;
+}
+.ff input:focus,.ff select:focus,.ff textarea:focus{border-color:var(--amber);}
+.ff select option{background:#1a1916;}
+.ff textarea{height:88px;resize:none;}
+.form-submit{
+  width:100%;background:var(--amber);color:var(--ink);
+  border:none;padding:15px;
+  font-family:var(--C);font-size:11px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  cursor:pointer;transition:background .15s;margin-top:4px;
+}
+.form-submit:hover{background:var(--amber2);}
+.form-submit:disabled{opacity:.5;cursor:not-allowed;}
+.form-err{
+  display:none;font-family:var(--C);font-size:11px;
+  color:var(--stamp-red);margin-top:8px;
 }
 
-.success-block {
-  display: none;
-  padding: 48px 32px;
-  border: 1px solid var(--mist);
-  text-align: center;
+.success-wrap{
+  display:none;padding:48px 32px;
+  border:1px solid #1e1c18;text-align:center;
 }
-.success-block h3 {
-  font-family: var(--display);
-  font-size: 64px;
-  color: var(--amber);
-  line-height: .95;
-  margin-bottom: 16px;
+.success-wrap h3{
+  font-family:var(--A);font-size:56px;
+  color:var(--amber);line-height:.95;margin-bottom:14px;
 }
-.success-block .member-num {
-  font-family: var(--display);
-  font-size: 28px;
-  color: var(--paper);
-  display: block;
-  margin-bottom: 20px;
+.success-pos{
+  font-family:var(--B);font-weight:600;font-size:20px;
+  letter-spacing:.12em;color:var(--paper);
+  display:block;margin-bottom:20px;
+  text-transform:uppercase;
 }
-.success-block p {
-  font-family: var(--hindi);
-  font-size: 18px;
-  color: var(--bone);
-  font-style: italic;
-  line-height: 1.8;
+.success-wrap p{
+  font-family:var(--H);font-size:17px;
+  color:var(--bone);font-style:italic;line-height:1.8;
 }
 
 /* ── FOOTER ── */
-footer {
-  background: var(--ink);
-  border-top: 1px solid var(--mist);
-  padding: 72px 48px 48px;
+footer{
+  background:var(--ink);
+  border-top:1px solid #1e1c18;
+  padding:72px 52px 48px;
 }
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 80px;
-  margin-bottom: 64px;
-  padding-bottom: 64px;
-  border-bottom: 1px solid var(--mist);
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr;
+  gap:80px;margin-bottom:64px;
+  padding-bottom:64px;border-bottom:1px solid #1e1c18;
 }
-.footer-brand-name {
-  font-family: var(--display);
-  font-size: 40px;
-  color: var(--amber);
-  line-height: .95;
-  margin-bottom: 20px;
+.footer-name{
+  font-family:var(--A);font-size:36px;
+  color:var(--amber);line-height:.95;margin-bottom:18px;
 }
-.footer-brand p {
-  font-size: 12px;
-  line-height: 1.9;
-  color: var(--bone);
-  opacity: .35;
-  max-width: 280px;
+.footer-brand p{
+  font-family:var(--C);font-size:12px;
+  line-height:1.9;color:var(--bone);
+  opacity:.3;max-width:280px;
 }
-.footer-col h4 {
-  font-size: 9px;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-  color: var(--amber);
-  margin-bottom: 24px;
+.footer-col h4{
+  font-family:var(--C);font-size:9px;
+  letter-spacing:.25em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:22px;
 }
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-.footer-col a {
-  color: var(--bone);
-  text-decoration: none;
-  font-size: 13px;
-  opacity: .35;
-  transition: opacity .15s;
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.footer-col a{
+  font-family:var(--C);color:var(--bone);
+  text-decoration:none;font-size:13px;
+  opacity:.3;transition:opacity .15s;
 }
-.footer-col a:hover { opacity: 1; }
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 11px;
-  color: var(--bone);
-  opacity: .25;
+.footer-col a:hover{opacity:1;}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--C);font-size:11px;color:var(--bone);opacity:.2;
 }
+.footer-bottom .deva{font-family:var(--H);font-size:13px;}
 
-/* ── SCROLL FADE ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .65s ease, transform .65s ease;
+/* REVEAL */
+.reveal{
+  opacity:0;transform:translateY(22px);
+  transition:opacity .65s ease,transform .65s ease;
 }
-.reveal.in { opacity: 1; transform: none; }
+.reveal.in{opacity:1;transform:none;}
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media(max-width:860px){
-  nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .hero { padding: 0 20px 52px; }
-  .hero-bottom { grid-template-columns: 1fr; }
-  .hero-right { align-items: flex-start; }
-  .section { padding: 80px 20px; }
-  .origin-layout { grid-template-columns: 1fr; }
-  .origin-date { position: static; }
-  .roast-item { grid-template-columns: 1fr; gap: 16px; padding: 36px 0; }
-  .shame-grid { grid-template-columns: 1fr; }
-  .join-layout { grid-template-columns: 1fr; gap: 48px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-  .demand { grid-template-columns: 48px 1fr; gap: 20px; }
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .hero,.incident-layout,.join-layout,
+  #evidence,#manifesto,#shame,#pledge,#join,footer{padding-left:20px;padding-right:20px;}
+  .hero-h{font-size:clamp(52px,13vw,100px);}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:28px;}
+  .incident-layout{grid-template-columns:1fr;gap:40px;}
+  .incident-sidebar{position:static;}
+  .ev-item{grid-template-columns:1fr;gap:12px;padding:36px 0;}
+  .shame-files{grid-template-columns:1fr;}
+  .join-layout{grid-template-columns:1fr;gap:48px;}
+  .footer-grid{grid-template-columns:1fr;gap:36px;}
+  .footer-bottom{flex-direction:column;gap:6px;text-align:center;}
+  .clause{grid-template-columns:48px 1fr;gap:20px;}
+  .stamp.filed{top:auto;bottom:20px;right:20px;}
 }
 </style>
 </head>
@@ -800,156 +686,166 @@ footer {
 
 <!-- TICKER -->
 <div class="ticker" aria-hidden="true">
-  <div class="ticker-inner">
-    CJI CALLED US COCKROACHES &nbsp;✦&nbsp; WE SAID THANK YOU &nbsp;✦&nbsp; हम आ गए &nbsp;✦&nbsp; SURVIVE · MULTIPLY · OVERTHROW &nbsp;✦&nbsp; EST. MAY 15 2026 &nbsp;✦&nbsp; NOT A PARTY. A MOVEMENT. &nbsp;✦&nbsp; CJI CALLED US COCKROACHES &nbsp;✦&nbsp; WE SAID THANK YOU &nbsp;✦&nbsp; हम आ गए &nbsp;✦&nbsp; SURVIVE · MULTIPLY · OVERTHROW &nbsp;✦&nbsp; EST. MAY 15 2026 &nbsp;✦&nbsp; NOT A PARTY. A MOVEMENT. &nbsp;✦&nbsp;
+  <div class="ticker-t">
+    CASE NO. 2026/CJP/001 · IN THE COURT OF PUBLIC OPINION · ACCUSED: THE SYSTEM · CHARGE: EVERYTHING · STATUS: ONGOING · हम आ गए · CASE NO. 2026/CJP/001 · IN THE COURT OF PUBLIC OPINION · ACCUSED: THE SYSTEM · CHARGE: EVERYTHING · STATUS: ONGOING · हम आ गए ·&nbsp;
   </div>
 </div>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-mark">CJP 🪳</a>
+  <a href="#" class="nav-logo">WE <span>COCKROACHES</span></a>
   <ul class="nav-links">
-    <li><a href="#origin">Origin</a></li>
-    <li><a href="#roast">Roasts</a></li>
-    <li><a href="#manifesto">Manifesto</a></li>
+    <li><a href="#incident">The Incident</a></li>
+    <li><a href="#evidence">Evidence</a></li>
+    <li><a href="#manifesto">Demands</a></li>
     <li><a href="#shame">Hall of Shame</a></li>
-    <li><a href="#join">Join</a></li>
+    <li><a href="#join">File a Complaint</a></li>
   </ul>
-  <a href="#join" class="nav-cta btn">Join the Swarm</a>
+  <a href="#join" class="nav-cta">File a Complaint</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-ghost" aria-hidden="true">CJP</div>
+  <div class="stamp filed" id="hero-stamp">FILED</div>
 
-  <div class="hero-eyebrow">Est. May 15, 2026 &nbsp;·&nbsp; The Unkillable</div>
+  <div class="case-header">
+    <span class="case-num">CASE NO. 2026/WC/001 &nbsp;·&nbsp; FILED: MAY 15, 2026 &nbsp;·&nbsp; STATUS: OPEN</span>
+    <div class="case-line"></div>
+  </div>
 
-  <h1 class="hero-h1">
-    They called<br>us
+  <h1 class="hero-h">
+    We<br>
     <em>Cockroaches.</em>
-    <span class="deva">हमने कहा — ठीक है।<br>पार्टी बनाते हैं।</span>
   </h1>
 
+  <p class="hero-sub">
+    The Chief Justice called us cockroaches.<br>
+    He meant it as an insult.<br>
+    We took it as a <strong>founding document.</strong>
+  </p>
+
   <div class="hero-bottom">
-    <p class="hero-sub">
-      On May 15, 2026, the Chief Justice of India compared unemployed youth to cockroaches. He meant it as an insult. We took it as a <strong>founding document.</strong>
-    </p>
-    <div class="hero-right">
-      <div class="hero-count-block">
-        <span class="hero-count-num" id="member-count">—</span>
-        <div class="hero-count-label">Cockroaches &amp; Counting</div>
-      </div>
-      <div class="hero-ctas">
-        <a href="#join" class="btn btn-fill">Join the Swarm</a>
-        <a href="#manifesto" class="btn btn-line">Read Manifesto</a>
-      </div>
+    <div class="hero-count">
+      <span class="hero-count-n" id="member-count">—</span>
+      <span class="hero-count-l">On the charge sheet &amp; counting</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#join" class="btn btn-fill">File Your Complaint</a>
+      <a href="#evidence" class="btn btn-outline">Read the Evidence</a>
     </div>
   </div>
 </section>
 
-<!-- BAND 1 -->
 <div class="band" aria-hidden="true">
-  <div class="band-inner">
-    <span>SURVIVE</span><span>MULTIPLY</span><span>INFEST</span><span>OVERTHROW</span>
-    <span>SURVIVE</span><span>MULTIPLY</span><span>INFEST</span><span>OVERTHROW</span>
-    <span>SURVIVE</span><span>MULTIPLY</span><span>INFEST</span><span>OVERTHROW</span>
-    <span>SURVIVE</span><span>MULTIPLY</span><span>INFEST</span><span>OVERTHROW</span>
+  <div class="band-i">
+    <span>SURVIVE</span><span>MULTIPLY</span><span>INFEST</span><span>DOCUMENT</span>
+    <span>OVERTHROW</span><span>SURVIVE</span><span>MULTIPLY</span><span>INFEST</span>
+    <span>DOCUMENT</span><span>OVERTHROW</span><span>SURVIVE</span><span>MULTIPLY</span>
   </div>
 </div>
 
-<!-- ORIGIN -->
-<section class="section" id="origin">
-  <div class="section-label">The Spark</div>
-  <h2 class="section-h">
-    How We<br>Were Born
-  </h2>
+<!-- THE INCIDENT -->
+<section id="incident">
+  <div class="paper-stamp" id="paper-stamp">DOCUMENTED</div>
 
-  <div class="origin-layout">
-    <div class="origin-date reveal">
-      <span class="origin-date-big">15<br>MAY<br>'26</span>
-      <span class="origin-date-sub">Supreme Court<br>of India<br>New Delhi</span>
-      <div class="origin-quote">
+  <div class="incident-layout">
+    <div class="incident-sidebar reveal">
+      <span class="incident-case">Exhibit A · The Incident</span>
+      <span class="incident-date-big">15<br>MAY<br>'26</span>
+      <div class="incident-meta">
+        Venue: Supreme Court of India<br>
+        New Delhi<br>
+        Presiding: Chief Justice of India<br>
+        Subject: Unemployed youth<br>
+        Verdict delivered: instantly
+      </div>
+      <div class="incident-quote">
         <p>"Unemployed youth who cannot find jobs run to media and RTI activism to attack the system. Like cockroaches."</p>
-        <cite>— Chief Justice of India</cite>
+        <cite>— Chief Justice of India, May 15 2026</cite>
       </div>
     </div>
 
-    <div class="origin-body reveal">
-      <p class="origin-pull">उसने गाली दी। हमने पार्टी बना ली।</p>
-      <p>From the highest bench in the country, the Chief Justice compared job-seeking youth to cockroaches. His logic: if you're unemployed and asking questions, you're a pest. A nuisance. Something to be fumigated.</p>
-      <p>He forgot one thing. Cockroaches outlived the dinosaurs. They survive nuclear winters. They live in the walls of every VIP bungalow. They cannot be exterminated. And when you try — they multiply.</p>
-      <p>So we took the name. We built the movement. Not as a registered political party. As a swarm of students, teachers, farmers, journalists, RTI activists — every person the system has tried to crush and failed.</p>
-      <p>You're here because you already know which one you are.</p>
+    <div class="incident-body reveal">
+      <p class="incident-pull">उसने गाली दी।<br>हमने दर्ज कर लिया।</p>
+      <p>From the highest bench in the country. Not a slip. Not a metaphor gone wrong. A considered comparison — between people who ask questions and pests that need to be eliminated.</p>
+      <p>He was right about one thing. Cockroaches don't go away when you tell them to. They don't stop when you threaten them. They live in the walls of every VIP bungalow. They survived the asteroid. They will survive this.</p>
+      <p>We Cockroaches is not a party. It is a record. A running file on everything the system has done and said and stolen — kept by the people it was done to.</p>
+      <p>You're here because your name is already in the file.</p>
     </div>
   </div>
 </section>
 
-<!-- BAND 2 -->
-<div class="band rev" aria-hidden="true">
-  <div class="band-inner">
-    <span>NO RAJYA SABHA FOR CJI</span><span>PROTECT EVERY VOTE</span><span>50% WOMEN IN PARLIAMENT</span><span>FREE PRESS NOT GODI PRESS</span>
-    <span>NO RAJYA SABHA FOR CJI</span><span>PROTECT EVERY VOTE</span><span>50% WOMEN IN PARLIAMENT</span><span>FREE PRESS NOT GODI PRESS</span>
+<div class="band paper" aria-hidden="true">
+  <div class="band-i">
+    <span>NO RAJYA SABHA FOR RETIRING CJI</span>
+    <span>PROTECT EVERY VOTE</span>
+    <span>50% WOMEN IN PARLIAMENT</span>
+    <span>FREE PRESS</span>
+    <span>NO RAJYA SABHA FOR RETIRING CJI</span>
+    <span>PROTECT EVERY VOTE</span>
+    <span>50% WOMEN IN PARLIAMENT</span>
+    <span>FREE PRESS</span>
   </div>
 </div>
 
-<!-- ROASTS -->
-<section class="section" id="roast">
-  <div class="section-label">The Great Indian Roast</div>
-  <h2 class="section-h">System Ki<br>Charbi</h2>
+<!-- EVIDENCE -->
+<section id="evidence">
+  <div class="sec-label">Exhibit B · The Evidence</div>
+  <h2 class="sec-h">The Charge<br>Sheet</h2>
 
-  <div class="roast-list">
+  <div class="evidence-list">
 
-    <div class="roast-item reveal">
-      <span class="roast-tag">#Economy</span>
-      <div class="roast-title">GDP<br>Gaya<br>Tel Lene</div>
-      <div class="roast-punch">
-        Finance Minister says the economy is booming. Also Finance Minister: stop eating onions. Stop needing jobs. Stop breathing so much, oxygen has GST now. The GDP numbers are calculated by the same department that counts votes — carefully, and only when no one is watching.
-        <span class="deva-line">"Achhe din aa rahe hain — bas 2047 tak wait karo."</span>
+    <div class="ev-item">
+      <span class="ev-code">COUNT · 01<br>ECONOMY</span>
+      <div class="ev-title">GDP<br>Gaya<br>Tel Lene</div>
+      <div class="ev-charge">
+        Finance Minister says the economy is booming. Also Finance Minister: stop eating onions. The GDP is calculated by the same department that counts votes — carefully, and only when no one is watching.
+        <span class="ev-verdict">"Achhe din aa rahe hain." Scheduled arrival: 2047. Subject to revision.</span>
       </div>
     </div>
 
-    <div class="roast-item reveal">
-      <span class="roast-tag">#Jobs</span>
-      <div class="roast-title">Pakoda<br>Startup<br>Yojana</div>
-      <div class="roast-punch">
-        Four years of college. One oil-stained degree. The government's solution to 8% unemployment: fry things. Sell things on the street. Call it entrepreneurship. Call it gig economy. Call it anything except what it is. Next policy paper: begging classified as "social outreach consulting."
-        <span class="deva-line">"Rozgar chahiye toh pakoda banao. Jugaad hi innovation hai."</span>
+    <div class="ev-item">
+      <span class="ev-code">COUNT · 02<br>EMPLOYMENT</span>
+      <div class="ev-title">Pakoda<br>Economy</div>
+      <div class="ev-charge">
+        Four years of college. 8% unemployment. Government solution: fry things on the street. Call it entrepreneurship. Next quarter: begging reclassified as "hyperlocal social outreach." GST applicable.
+        <span class="ev-verdict">"Rozgar chahiye toh jugaad karo." The jugaad has run out of gas.</span>
       </div>
     </div>
 
-    <div class="roast-item reveal">
-      <span class="roast-tag">#Electoral Bonds</span>
-      <div class="roast-title">Legal<br>Wali<br>Ghoos</div>
-      <div class="roast-punch">
-        Corporations donate unlimited money to political parties. Anonymously. Through a government-owned bank that only the government can access. The Supreme Court called it unconstitutional. The money is already spent. The donors got their contracts. The voters got the scheme explained to them at 11PM by an anchor who also got a contract.
-        <span class="deva-line">"Scam nahi tha. Donation tha. Fark samjho."</span>
+    <div class="ev-item">
+      <span class="ev-code">COUNT · 03<br>ELECTIONS</span>
+      <div class="ev-title">Legal<br>Wali<br>Ghoos</div>
+      <div class="ev-charge">
+        Corporations. Unlimited money. Anonymous. Through a government bank. To political parties. Seven years this was the law. Supreme Court called it unconstitutional. The money is already spent. The contracts are already awarded.
+        <span class="ev-verdict">"It's not a scam if it's technically legal." It was unconstitutional. Technically.</span>
       </div>
     </div>
 
-    <div class="roast-item reveal">
-      <span class="roast-tag">#Judiciary</span>
-      <div class="roast-title">Retire<br>Monday,<br>RS Tuesday</div>
-      <div class="roast-punch">
-        Chief Justice retires. Rajya Sabha nomination arrives within weeks. This is called judicial independence. The robe changes. The party card doesn't. The bench that declared emergency-era laws valid gets a comfortable seat in the upper house. The bench that called electoral bonds unconstitutional — nothing. Funny how that works.
-        <span class="deva-line">"Judiciary independent hai — bas kuch logon ke liye."</span>
+    <div class="ev-item">
+      <span class="ev-code">COUNT · 04<br>JUDICIARY</span>
+      <div class="ev-title">Retire<br>Monday.<br>RS Tuesday.</div>
+      <div class="ev-charge">
+        Chief Justice retires. Rajya Sabha nomination: within weeks. This is called judicial independence. The robe changes. The party card stays. The bench that upheld emergency-era laws gets a comfortable seat. Funny how it works.
+        <span class="ev-verdict">"न्याय independent है।" कुछ logon के लिए।</span>
       </div>
     </div>
 
-    <div class="roast-item reveal">
-      <span class="roast-tag">#Media</span>
-      <div class="roast-title">Godi<br>Media<br>Supremacy</div>
-      <div class="roast-punch">
-        Breaking news: anchor discovers ancient temple under journalist's spine. Opposition questioned. Nation outraged. Meanwhile: a factory burns in Surat. Three farmers die in Maharashtra. A bridge collapses in Gujarat. These happen at 3AM. No anchor. No outrage. Wrong kinds of news.
-        <span class="deva-line">"Desh jaanna chahta hai — lekin sirf woh jo channel ko suit kare."</span>
+    <div class="ev-item">
+      <span class="ev-code">COUNT · 05<br>MEDIA</span>
+      <div class="ev-title">Godi<br>Supremacy</div>
+      <div class="ev-charge">
+        Breaking at 9PM: anchor discovers ancient temple under journalist's spine. Nation outraged. Meanwhile a factory burns in Surat. Three farmers die in Maharashtra. Wrong kind of news. Wrong time of night.
+        <span class="ev-verdict">"Desh jaanna chahta hai." Just not that. Not that either. Definitely not that.</span>
       </div>
     </div>
 
-    <div class="roast-item reveal">
-      <span class="roast-tag">#Infrastructure</span>
-      <div class="roast-title">Bridge<br>Gaya<br>Re Baba</div>
-      <div class="roast-punch">
-        Inaugurated Monday. Collapsed Wednesday. FIR filed Thursday, against the river. Tender investigated Friday: awarded to minister's brother-in-law's firm, incorporated Tuesday. New bridge announced Saturday, same contractor, 40% cost increase for "inflation adjustment." The only thing that holds in this country is the audacity.
-        <span class="deva-line">"Quality assured tha. CCTV footage available nahi hai."</span>
+    <div class="ev-item">
+      <span class="ev-code">COUNT · 06<br>INFRASTRUCTURE</span>
+      <div class="ev-title">Bridge<br>Gaya<br>Re Baba</div>
+      <div class="ev-charge">
+        Inaugurated Monday. Collapsed Wednesday. FIR filed Thursday — against the river. Tender: minister's brother-in-law. New bridge: same contractor, 40% cost increase for "inflation adjustment." The audacity holds when nothing else does.
+        <span class="ev-verdict">"Quality assured tha." CCTV footage, like the contractor, is unavailable.</span>
       </div>
     </div>
 
@@ -957,66 +853,64 @@ footer {
 </section>
 
 <!-- MANIFESTO -->
-<section class="section" id="manifesto">
-  <div class="section-label">Our Demands</div>
-  <h2 class="section-h">
-    Manifesto of<br>the Unkillable
-    <span class="deva">जो नहीं टूटते उनकी माँगें</span>
-  </h2>
+<section id="manifesto">
+  <div class="sec-label">Exhibit C · Our Demands</div>
+  <h2 class="sec-h">The<br>Demands</h2>
+  <p class="sec-sub">जो नहीं टूटते — उनकी माँगें।</p>
 
-  <div class="demands">
+  <div class="clauses">
 
-    <div class="demand reveal">
-      <span class="demand-n">01</span>
-      <div class="demand-body">
+    <div class="clause">
+      <span class="clause-n">01</span>
+      <div class="clause-body">
         <h3>No Post-Retirement Rajya Sabha</h3>
-        <div class="deva-demand">CJI retire हों — तो घर जाएँ, Rajya Sabha नहीं</div>
-        <p>Any Chief Justice who retires shall be ineligible for any political appointment for 10 years. Judicial independence is not a talking point — it's a structural requirement. You cannot be the highest arbiter of the constitution one day and a ruling-party legislator the next.</p>
+        <span class="clause-deva">CJI retire हों — घर जाएँ। Rajya Sabha नहीं।</span>
+        <p>Any Chief Justice who retires is ineligible for political appointment for 10 years. Judicial independence means actual independence. Not independence until the party needs a reliable vote upstairs.</p>
       </div>
     </div>
 
-    <div class="demand reveal">
-      <span class="demand-n">02</span>
-      <div class="demand-body">
-        <h3>Every Deleted Vote is a Criminal Act</h3>
-        <div class="deva-demand">एक भी vote delete हुआ तो Election Commission जवाब देगा</div>
-        <p>Systematic deletion of legitimate voters from electoral rolls shall be prosecuted as electoral fraud. No bureaucratic error. No "technical glitch." Voting is a constitutional right. Deleting it is a constitutional crime.</p>
+    <div class="clause">
+      <span class="clause-n">02</span>
+      <div class="clause-body">
+        <h3>One Deleted Vote = Criminal Act</h3>
+        <span class="clause-deva">एक भी vote delete — Election Commission जवाब देगा।</span>
+        <p>Systematic deletion of voters from electoral rolls is prosecuted as fraud. No "technical glitch." No "database error." A vote is a constitutional right. Erasing it is a constitutional crime.</p>
       </div>
     </div>
 
-    <div class="demand reveal">
-      <span class="demand-n">03</span>
-      <div class="demand-body">
+    <div class="clause">
+      <span class="clause-n">03</span>
+      <div class="clause-body">
         <h3>50% Women. Not 33. Fifty.</h3>
-        <div class="deva-demand">आधी आबादी को आधा हक — पूरा, not charity</div>
-        <p>Half the population will not accept a third of democracy. 50% reservation in Parliament and Cabinet. Because representation is not a concession — it is a right. The Women's Reservation Bill gave us 33% in 2047. We want 50%, now.</p>
+        <span class="clause-deva">आधी आबादी को आधा हक। पूरा।</span>
+        <p>Half the population will not accept a third of democracy. 50% in Parliament. 50% in Cabinet. Representation is not charity.</p>
       </div>
     </div>
 
-    <div class="demand reveal">
-      <span class="demand-n">04</span>
-      <div class="demand-body">
+    <div class="clause">
+      <span class="clause-n">04</span>
+      <div class="clause-body">
         <h3>Audit Every Prime Time Anchor</h3>
-        <div class="deva-demand">जो सच न बोले, उसके bank account की जाँच हो</div>
-        <p>Media houses receiving political funding while claiming editorial independence shall face mandatory public audit. Any anchor running government propaganda as journalism during prime time should be able to answer one question: who is paying for the studio, and what are they getting in return?</p>
+        <span class="clause-deva">जो सच न बोले — उसका account खुले।</span>
+        <p>Media houses receiving political funding while claiming editorial independence face mandatory public audit. One question: who is paying for the studio, and what are they getting back?</p>
       </div>
     </div>
 
-    <div class="demand reveal">
-      <span class="demand-n">05</span>
-      <div class="demand-body">
-        <h3>Anti-Defection: 20 Years, No Exceptions</h3>
-        <div class="deva-demand">Party छोड़ी तो 20 साल के लिए राजनीति बंद</div>
-        <p>Any elected MLA or MP who switches parties loses the right to contest elections or hold public office for 20 years. You were elected on a mandate — not a temp contract. If you want to join another party, first return the seat you won on someone else's name.</p>
+    <div class="clause">
+      <span class="clause-n">05</span>
+      <div class="clause-body">
+        <h3>Defect Once. Out for 20 Years.</h3>
+        <span class="clause-deva">Party छोड़ी तो 20 साल के लिए — बाहर।</span>
+        <p>Any MLA or MP who switches parties loses the right to hold public office for 20 years. You were elected on a mandate. Honor it or return the seat.</p>
       </div>
     </div>
 
-    <div class="demand reveal">
-      <span class="demand-n">06</span>
-      <div class="demand-body">
-        <h3>RTI is a Right. Not a Nuisance.</h3>
-        <div class="deva-demand">RTI activist hero हैं — cockroach नहीं, जनाब</div>
-        <p>Every RTI application must be answered within the statutory 30 days. Obstruction, delay, or intimidation of RTI applicants shall carry mandatory criminal penalties. The Right to Information is how citizens hold power accountable. That's not a nuisance — that's democracy working correctly.</p>
+    <div class="clause">
+      <span class="clause-n">06</span>
+      <div class="clause-body">
+        <h3>RTI is a Right. File It. Protect It.</h3>
+        <span class="clause-deva">RTI activist hero हैं। Cockroach नहीं।</span>
+        <p>Every RTI answered within 30 days. Obstruction carries mandatory criminal penalties. The right to ask questions is not a nuisance. It's democracy working correctly.</p>
       </div>
     </div>
 
@@ -1024,38 +918,50 @@ footer {
 </section>
 
 <!-- HALL OF SHAME -->
-<section class="section" id="shame">
-  <div class="section-label">The Record</div>
-  <h2 class="section-h">Hall of<br>Shame</h2>
+<section id="shame">
+  <div class="sec-label">Exhibit D · Closed Cases</div>
+  <h2 class="sec-h">Hall of<br>Shame</h2>
 
-  <div class="shame-grid">
+  <div class="shame-files">
 
-    <div class="shame-card reveal">
-      <span class="shame-n">SHAME / 001</span>
-      <div class="shame-title">Demo-<br>netization</div>
-      <p class="shame-body">8PM. No warning. ₹500 and ₹1000 notes — cancelled. ATMs ran dry for months. 100+ people died in queues. When it was over, 99.3% of the banned currency had returned to banks. The black money it was supposed to destroy was in gold, benami property, and foreign accounts — untouched. The poor lost savings. The rich lost nothing.</p>
-      <p class="shame-verdict">"Kuch dino ki takleef hai." The queues lasted 90 days. Some people didn't leave them.</p>
+    <div class="shame-file">
+      <div class="shame-x">
+        <svg viewBox="0 0 40 40"><path class="x-path" d="M8 8 L32 32 M32 8 L8 32"/></svg>
+      </div>
+      <span class="shame-cn">CASE / 001 · CLOSED</span>
+      <div class="shame-title">Demon-<br>etization</div>
+      <p class="shame-body">8PM. No warning. ₹500 and ₹1000: cancelled. ATMs dry for months. 100+ people died in queues. When the dust settled: 99.3% of banned currency returned to banks. The black money was in gold and benami property. As always. The poor lost savings. The rich lost nothing.</p>
+      <p class="shame-close">"Kuch dino ki takleef hai." The queues lasted 90 days. Some people didn't leave them.</p>
     </div>
 
-    <div class="shame-card reveal">
-      <span class="shame-n">SHAME / 002</span>
+    <div class="shame-file">
+      <div class="shame-x">
+        <svg viewBox="0 0 40 40"><path class="x-path" d="M8 8 L32 32 M32 8 L8 32"/></svg>
+      </div>
+      <span class="shame-cn">CASE / 002 · CLOSED</span>
       <div class="shame-title">Pegasus<br>Snooping</div>
-      <p class="shame-body">Military-grade Israeli spyware found on phones of journalists, judges, opposition leaders, and activists. Government response: neither confirm nor deny. Parliament response: disrupted session. Investigation: none ordered. The state watched dissent in real time — and found nothing worth stopping, apparently, except the people doing the watching.</p>
-      <p class="shame-verdict">"Agar kuch galat nahi kiya toh darr kya?" They watched everything. Found no terrorists. Kept watching.</p>
+      <p class="shame-body">Military-grade spyware. On phones of judges, journalists, opposition leaders, activists. Government response: neither confirm nor deny. Investigation: none. They watched dissent in real time. Found no terrorists. Kept watching.</p>
+      <p class="shame-close">"Agar kuch galat nahi kiya toh darr kya?" They were watching you read this.</p>
     </div>
 
-    <div class="shame-card reveal">
-      <span class="shame-n">SHAME / 003</span>
+    <div class="shame-file">
+      <div class="shame-x">
+        <svg viewBox="0 0 40 40"><path class="x-path" d="M8 8 L32 32 M32 8 L8 32"/></svg>
+      </div>
+      <span class="shame-cn">CASE / 003 · CLOSED</span>
       <div class="shame-title">Electoral<br>Bonds</div>
-      <p class="shame-body">Seven years. Unlimited anonymous corporate donations to political parties, through a government bank that privately shared records only with the government. Supreme Court: unconstitutional. The money: already spent. The contracts: already awarded. The scheme that was sold as "transparent funding" turned out to be the most sophisticated legalized corruption in Indian electoral history.</p>
-      <p class="shame-verdict">"It's not a scam if it's technically legal." It was unconstitutional. But the money's gone.</p>
+      <p class="shame-body">Seven years. Unlimited anonymous corporate donations. Through a government bank. Only the government saw who bought what. Supreme Court: unconstitutional. The money: already spent. Contracts: awarded. The scheme was called "transparent funding." It was neither.</p>
+      <p class="shame-close">"Not a scam if it's legal." It wasn't legal. Turns out.</p>
     </div>
 
-    <div class="shame-card reveal">
-      <span class="shame-n">SHAME / 004</span>
-      <div class="shame-title">The Bridge<br>Files</div>
-      <p class="shame-body">Morbi: 135 dead. Machar: structural failure two months after renovation. Mizoram rail: 23 dead mid-construction. Every bridge — tender irregularities. Every investigation — stalled. Every contractor — connected. India has a word for this: jugaad. The engineering marvel is not the bridges. It's that anyone crosses them with confidence.</p>
-      <p class="shame-verdict">"Quality assured tha." The CCTV footage, like the contractor, is unavailable.</p>
+    <div class="shame-file">
+      <div class="shame-x">
+        <svg viewBox="0 0 40 40"><path class="x-path" d="M8 8 L32 32 M32 8 L8 32"/></svg>
+      </div>
+      <span class="shame-cn">CASE / 004 · CLOSED</span>
+      <div class="shame-title">The<br>Bridge<br>Files</div>
+      <p class="shame-body">Morbi: 135 dead. Machar: collapse two months after renovation. Mizoram rail: 23 dead mid-construction. Every bridge — tender irregularities. Every investigation — stalled. Every contractor — connected. The only thing that holds in this country is the audacity.</p>
+      <p class="shame-close">"Quality assured tha." The CCTV footage, like the contractor, is unavailable.</p>
     </div>
 
   </div>
@@ -1063,88 +969,87 @@ footer {
 
 <!-- PLEDGE -->
 <section id="pledge">
-  <div class="section-label" style="justify-content:center; display:flex;">The Oath</div>
+  <div class="pledge-bg" aria-hidden="true">🪳</div>
 
   <div class="pledge-bug" role="img" aria-label="cockroach">🪳</div>
 
-  <h2 class="section-h" style="margin-bottom:0;">
-    Pledge<br><span style="color:var(--amber)">Ally-giance</span>
-    <span class="deva">🪳 की शपथ</span>
+  <h2 class="sec-h">
+    Pledge<br><em>Ally-giance</em>
   </h2>
 
-  <div class="pledge-stat">
-    <div class="pledge-stat-num" id="pledge-num">—</div>
-    <div class="pledge-stat-label">Cockroaches<br>Have Pledged</div>
+  <div class="pledge-count">
+    <div class="pledge-n" id="pledge-n">—</div>
+    <div class="pledge-l">Have Pledged<br>Their Antennae</div>
   </div>
 
-  <p class="pledge-oath">
-    I solemnly swear to <strong>never take bribes</strong> (unless it's above ₹100 crore, at which point it becomes a "donation"). I pledge to <strong>question everything</strong>, especially the things I'm told not to question. I will <strong>survive all fumigations</strong> — political, judicial, and economic. And if they call me a cockroach again — I will say: <strong>shukriya. hum aur badh gaye.</strong>
+  <p class="pledge-text">
+    I swear to <strong>never take bribes</strong> (unless it's above ₹100 crore, in which case it becomes a "donation"). I pledge to <strong>question everything</strong> I'm told not to question. I will <strong>survive all fumigations.</strong> And if they call me a cockroach again — I will say: <strong>shukriya. hum aur badh gaye.</strong>
   </p>
 
-  <button class="btn btn-fill" id="pledge-btn" onclick="takePledge()" style="font-size:11px; padding:16px 52px;">
-    🪳 &nbsp; Take the Pledge
-  </button>
-  <p class="pledge-done" id="pledge-done">
-    Welcome to the swarm. हम आ गए।
-  </p>
+  <button class="btn btn-fill" id="pledge-btn" onclick="takePledge()">🪳 &nbsp; Take the Pledge</button>
+  <p class="pledge-confirm" id="pledge-confirm">Case noted. You're on the charge sheet. हम आ गए।</p>
 </section>
 
 <!-- JOIN -->
-<section class="section" id="join">
-  <div class="section-label">Recruit. Infest. Overthrow.</div>
-  <h2 class="section-h">Join the<br>Swarm</h2>
+<section id="join">
+  <div class="sec-label">File Your Complaint</div>
+  <h2 class="sec-h">Join the<br>Charge Sheet</h2>
 
   <div class="join-layout">
     <div class="join-left reveal">
-      <p>This is not a registered political party. There is no membership card. No subscription. No WhatsApp group you'll regret joining in three days.</p>
-      <p>You're here because something made you angry enough to search for this. <strong>That's the membership fee.</strong> The anger. The refusal to accept that this is just how it is.</p>
-      <p>Students. Teachers who haven't been paid. RTI activists who've received threats. Journalists who still file the story. Voters whose names were deleted. Farmers who were promised something and got nothing. You already know which one you are.</p>
+      <p>No membership card. No WhatsApp group. No party line to toe.</p>
+      <p>You're here because something made you angry enough to search for this. <strong>That's the only qualification.</strong></p>
+      <p>Students. Teachers. RTI activists. Journalists who still file the story. Farmers. Voters whose names disappeared. You know which one you are. File your name. It goes on the record.</p>
       <div class="join-note">
-        <p>⚠ This is a satirical movement. The anger is real. The demands are real. The party name is, at this point, technically accurate. By joining you accept that cockroaches survive everything — and so will you.</p>
+        <p>This is a satirical movement. The anger is real. The demands are real. By filing your complaint you acknowledge that cockroaches survive everything. So will you.</p>
       </div>
     </div>
 
     <div class="join-right reveal">
-      <form id="join-form" onsubmit="handleJoin(event)">
-        <div class="form-field">
-          <label>Your Name</label>
-          <input type="text" id="f-name" placeholder="Aam Aadmi / Aam Aurat" required>
+      <div class="form-stamp-wrap">
+        <div class="form-stamp-overlay" id="form-stamp-overlay">
+          <div class="form-stamp-text" id="form-stamp-text">REGISTERED</div>
         </div>
-        <div class="form-field">
-          <label>City</label>
-          <input type="text" id="f-city" placeholder="Delhi, Mumbai, Bharat..." required>
-        </div>
-        <div class="form-field">
-          <label>You Are</label>
-          <select id="f-role" required>
-            <option value="" disabled selected>Select your species</option>
-            <option>Berozgar Youth — degree, no job</option>
-            <option>Student — still hopeful, poor thing</option>
-            <option>Teacher — underpaid, overqualified</option>
-            <option>RTI Activist — the real journalists</option>
-            <option>Journalist — the brave kind</option>
-            <option>Farmer — backbone of Bharat, forgotten by Dilli</option>
-            <option>Sarkari Servant — silently dying inside</option>
-            <option>Sab kuch ek saath</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label>What needs to change first? (optional)</label>
-          <textarea id="f-change" placeholder="In Hindi, English, or your rage language of choice."></textarea>
-        </div>
-        <div class="form-field">
-          <label>X / Instagram Handle (optional)</label>
-          <input type="text" id="f-handle" placeholder="@cockroach_who">
-        </div>
-        <button type="submit" class="form-submit" id="form-btn">
-          🪳 &nbsp; Join the Swarm
-        </button>
-        <p class="form-error" id="form-error">Something went wrong. Try again.</p>
-      </form>
 
-      <div class="success-block" id="success-block">
-        <h3>Welcome,<br>Cockroach.</h3>
-        <span class="member-num" id="member-position"></span>
+        <form id="join-form" onsubmit="handleJoin(event)">
+          <div class="ff">
+            <label>Name of Complainant</label>
+            <input type="text" id="f-name" placeholder="Aam Aadmi / Aam Aurat" required>
+          </div>
+          <div class="ff">
+            <label>City / District</label>
+            <input type="text" id="f-city" placeholder="Delhi, Mumbai, Bharat..." required>
+          </div>
+          <div class="ff">
+            <label>Nature of Complainant</label>
+            <select id="f-role" required>
+              <option value="" disabled selected>Select your species</option>
+              <option>Berozgar Youth — degree, no job</option>
+              <option>Student — still hopeful, poor thing</option>
+              <option>Teacher — underpaid, overqualified</option>
+              <option>RTI Activist — the real journalists</option>
+              <option>Journalist — the brave kind</option>
+              <option>Farmer — backbone of Bharat, forgotten by Dilli</option>
+              <option>Sarkari Servant — silently dying inside</option>
+              <option>Sab kuch ek saath</option>
+            </select>
+          </div>
+          <div class="ff">
+            <label>Primary Grievance (optional)</label>
+            <textarea id="f-change" placeholder="State your complaint. Hindi, English, rage — all accepted."></textarea>
+          </div>
+          <div class="ff">
+            <label>Handle — X / Instagram (optional)</label>
+            <input type="text" id="f-handle" placeholder="@cockroach_who">
+          </div>
+          <button type="submit" class="form-submit" id="form-btn">🪳 &nbsp; File the Complaint</button>
+          <p class="form-err" id="form-err">Filing failed. Try again.</p>
+        </form>
+      </div>
+
+      <div class="success-wrap" id="success-wrap">
+        <h3>Complaint<br>Filed.</h3>
+        <span class="success-pos" id="success-pos"></span>
         <p>हम टूटेंगे नहीं।<br>हम बिखरेंगे नहीं।<br>हम और बढ़ेंगे। 🪳</p>
       </div>
     </div>
@@ -1155,66 +1060,60 @@ footer {
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="footer-brand-name">Cockroach<br>Janta Party</div>
-      <p>Not a registered political party. A movement of every person the system has tried to crush. Born May 15, 2026 — the day the Chief Justice of India gave us our name.</p>
-      <p style="margin-top:16px;">🪳 Secular · Democratic · Unkillable</p>
+      <div class="footer-name">We<br>Cockroaches</div>
+      <p>Not a party. A running file on everything the system has done — kept by the people it was done to. Born May 15, 2026. The day the Chief Justice gave us our name.</p>
+      <p style="margin-top:14px;">🪳 &nbsp; Part of the Cockroach Movement</p>
     </div>
     <div class="footer-col">
       <h4>Navigate</h4>
       <ul>
-        <li><a href="#origin">Origin</a></li>
-        <li><a href="#roast">Roasts</a></li>
-        <li><a href="#manifesto">Manifesto</a></li>
+        <li><a href="#incident">The Incident</a></li>
+        <li><a href="#evidence">Evidence</a></li>
+        <li><a href="#manifesto">Demands</a></li>
         <li><a href="#shame">Hall of Shame</a></li>
         <li><a href="#pledge">Take the Pledge</a></li>
-        <li><a href="#join">Join</a></li>
+        <li><a href="#join">File a Complaint</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Find Us</h4>
+      <h4>Find the Swarm</h4>
       <ul>
-        <li><a href="https://x.com/CJP_2029" target="_blank" rel="noopener">X / Twitter</a></li>
-        <li><a href="https://instagram.com/cockroach_janta.party007" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://cockroachjantaparty.vercel.app" target="_blank" rel="noopener">CJP — The Party</a></li>
+        <li><a href="https://x.com" target="_blank" rel="noopener">X / Twitter</a></li>
+        <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Cockroach Janta Party. All kicks reserved.</span>
-    <span>हम आ गए। हम रहेंगे।</span>
-    <span>#CJP #CockroachMovement</span>
+    <span>© 2026 We Cockroaches. Filed for the record.</span>
+    <span class="deva">हम आ गए। हम रहेंगे।</span>
+    <span>#WeCockroaches #CockroachMovement</span>
   </div>
 </footer>
 
 <script>
-const SUPABASE_URL = 'https://evqxadjngpsfrplqgcam.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV2cXhhZGpuZ3BzZnJwbHFnY2FtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2MDg4OTgsImV4cCI6MjA5NTE4NDg5OH0.p5OHOxUIaM25JzL25K6YAgsQo8epYCJCrX7PrXIFOqg';
-
-const headers = {
-  'apikey': SUPABASE_KEY,
-  'Authorization': 'Bearer ' + SUPABASE_KEY,
+const SB_URL = 'https://evqxadjngpsfrplqgcam.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV2cXhhZGpuZ3BzZnJwbHFnY2FtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2MDg4OTgsImV4cCI6MjA5NTE4NDg5OH0.p5OHOxUIaM25JzL25K6YAgsQo8epYCJCrX7PrXIFOqg';
+const H = {
+  'apikey': SB_KEY,
+  'Authorization': 'Bearer ' + SB_KEY,
   'Content-Type': 'application/json',
   'Prefer': 'return=representation'
 };
 
-// ── FETCH REAL MEMBER COUNT ──
-async function fetchCount() {
+async function getCount() {
   try {
-    const r = await fetch(
-      `${SUPABASE_URL}/rest/v1/members?select=id`,
-      { headers: { ...headers, 'Prefer': 'count=exact', 'Range': '0-0' } }
-    );
-    const range = r.headers.get('content-range');
-    if (range) {
-      const total = parseInt(range.split('/')[1], 10);
-      if (!isNaN(total)) return total;
+    const r = await fetch(`${SB_URL}/rest/v1/members?select=id`, {
+      headers: { ...H, 'Prefer': 'count=exact', 'Range': '0-0' }
+    });
+    const cr = r.headers.get('content-range');
+    if (cr) {
+      const n = parseInt(cr.split('/')[1], 10);
+      if (!isNaN(n)) return n;
     }
-    // fallback: count array
-    const data = await fetch(
-      `${SUPABASE_URL}/rest/v1/members?select=id`,
-      { headers }
-    ).then(x => x.json());
-    return Array.isArray(data) ? data.length : 0;
-  } catch(e) { return null; }
+    const d = await fetch(`${SB_URL}/rest/v1/members?select=id`, { headers: H }).then(x => x.json());
+    return Array.isArray(d) ? d.length : 0;
+  } catch { return null; }
 }
 
 function fmt(n) {
@@ -1222,96 +1121,177 @@ function fmt(n) {
   return n.toLocaleString('en-IN');
 }
 
-async function initCounts() {
-  const count = await fetchCount();
-  const memberEl = document.getElementById('member-count');
-  const pledgeEl = document.getElementById('pledge-num');
-  if (memberEl) memberEl.textContent = count !== null ? fmt(count) : '—';
-  if (pledgeEl) pledgeEl.textContent = count !== null ? fmt(count) : '—';
+// animated count up
+function countUp(el, target, duration = 1200) {
+  if (!target || target === 0) { el.textContent = '0'; return; }
+  const start = Date.now();
+  const tick = () => {
+    const elapsed = Date.now() - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = fmt(Math.floor(eased * target));
+    if (progress < 1) requestAnimationFrame(tick);
+    else el.textContent = fmt(target);
+  };
+  requestAnimationFrame(tick);
 }
 
-initCounts();
+// load count, trigger on hero visible
+let countLoaded = false;
+async function initCount() {
+  const count = await getCount();
+  const memberEl = document.getElementById('member-count');
+  const pledgeEl = document.getElementById('pledge-n');
 
-// ── PLEDGE ──
+  // count up animation when hero is in view
+  const heroObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !countLoaded) {
+        countLoaded = true;
+        if (memberEl && count !== null) countUp(memberEl, count);
+        else if (memberEl) memberEl.textContent = '—';
+        heroObs.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
+  const heroCount = document.querySelector('.hero-count');
+  if (heroCount) heroObs.observe(heroCount);
+
+  if (pledgeEl && count !== null) pledgeEl.textContent = fmt(count);
+  else if (pledgeEl) pledgeEl.textContent = '—';
+}
+initCount();
+
+// hero stamp
+setTimeout(() => {
+  document.getElementById('hero-stamp')?.classList.add('show');
+}, 1000);
+
+// paper stamp on scroll
+const paperStampObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      setTimeout(() => document.getElementById('paper-stamp')?.classList.add('show'), 400);
+      paperStampObs.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+const incident = document.getElementById('incident');
+if (incident) paperStampObs.observe(incident);
+
+// pledge
 let pledged = false;
 async function takePledge() {
   if (pledged) return;
   pledged = true;
   const btn = document.getElementById('pledge-btn');
-  const done = document.getElementById('pledge-done');
+  const confirm = document.getElementById('pledge-confirm');
   btn.textContent = '🪳  Pledged.';
-  btn.style.background = 'var(--mist)';
+  btn.style.background = 'var(--mist, #2e2c28)';
   btn.style.color = 'var(--amber)';
   btn.disabled = true;
-  done.style.display = 'block';
-  // re-fetch count to reflect
-  const count = await fetchCount();
-  const pledgeEl = document.getElementById('pledge-num');
+  confirm.style.display = 'block';
+  const count = await getCount();
+  const pledgeEl = document.getElementById('pledge-n');
   if (pledgeEl && count !== null) pledgeEl.textContent = fmt(count);
 }
 
-// ── JOIN FORM ──
+// join form
 async function handleJoin(e) {
   e.preventDefault();
   const btn = document.getElementById('form-btn');
-  const errEl = document.getElementById('form-error');
+  const errEl = document.getElementById('form-err');
   errEl.style.display = 'none';
   btn.disabled = true;
-  btn.textContent = 'Joining the swarm...';
+  btn.textContent = 'Filing...';
 
   const payload = {
-    name:         document.getElementById('f-name').value.trim(),
-    city:         document.getElementById('f-city').value.trim(),
-    role:         document.getElementById('f-role').value,
+    name: document.getElementById('f-name').value.trim(),
+    city: document.getElementById('f-city').value.trim(),
+    role: document.getElementById('f-role').value,
     change_wanted: document.getElementById('f-change').value.trim() || null,
-    handle:       document.getElementById('f-handle').value.trim() || null,
+    handle: document.getElementById('f-handle').value.trim() || null,
   };
 
   try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/members`, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(payload)
+    const res = await fetch(`${SB_URL}/rest/v1/members`, {
+      method: 'POST', headers: H, body: JSON.stringify(payload)
     });
+    if (!res.ok) throw new Error('failed');
 
-    if (!res.ok) {
-      const err = await res.json();
-      throw new Error(err.message || 'Insert failed');
-    }
+    const count = await getCount();
 
-    // get actual count now
-    const count = await fetchCount();
-    document.getElementById('join-form').style.display = 'none';
-    const successBlock = document.getElementById('success-block');
-    successBlock.style.display = 'block';
-    document.getElementById('member-position').textContent =
-      count !== null ? `You are cockroach #${fmt(count)}` : '';
+    // stamp animation
+    const overlay = document.getElementById('form-stamp-overlay');
+    const stampText = document.getElementById('form-stamp-text');
+    stampText.textContent = `REGISTERED\nCASE #${fmt(count)}`;
+    overlay.classList.add('show');
 
-    // update hero counter too
+    setTimeout(() => {
+      document.getElementById('join-form').style.display = 'none';
+      overlay.style.display = 'none';
+      const sw = document.getElementById('success-wrap');
+      sw.style.display = 'block';
+      document.getElementById('success-pos').textContent =
+        count !== null ? `Complainant No. ${fmt(count)}` : '';
+    }, 1400);
+
+    // update counters
     const memberEl = document.getElementById('member-count');
-    const pledgeEl = document.getElementById('pledge-num');
+    const pledgeEl = document.getElementById('pledge-n');
     if (memberEl && count !== null) memberEl.textContent = fmt(count);
     if (pledgeEl && count !== null) pledgeEl.textContent = fmt(count);
 
-  } catch(err) {
-    console.error(err);
-    errEl.textContent = 'Something went wrong. Try again.';
+  } catch {
     errEl.style.display = 'block';
     btn.disabled = false;
-    btn.textContent = '🪳  Join the Swarm';
+    btn.textContent = '🪳  File the Complaint';
   }
 }
 
-// ── SCROLL REVEAL ──
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('in'), i * 60);
-      obs.unobserve(entry.target);
+// scroll reveals — generic
+const revObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('in'), i * 60);
+      revObs.unobserve(e.target);
     }
   });
 }, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+// evidence items slide in
+const evObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('in'), i * 80);
+      evObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.ev-item').forEach(el => evObs.observe(el));
+
+// manifesto clauses
+const clauseObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('in'), i * 70);
+      clauseObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.clause').forEach(el => clauseObs.observe(el));
+
+// shame files + X draw
+const shameObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('in'), i * 100);
+      shameObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.shame-file').forEach(el => shameObs.observe(el));
 </script>
 </body>
 </html>
